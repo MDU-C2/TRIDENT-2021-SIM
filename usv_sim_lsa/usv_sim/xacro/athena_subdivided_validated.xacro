@@ -21,13 +21,13 @@
         <visual>
           <origin rpy="0 0 0" xyz="0 0 0"/>
           <geometry>
-            <mesh filename="package://usv_sim/meshes/simpleHull3/base_link.dae" scale="${scale} ${scale} ${scale}"/>
+            <mesh filename="package://usv_sim/meshes/naiad/base_link.dae" scale="${scale} ${scale} ${scale}"/>
           </geometry>
         </visual>
         <collision>
           <origin rpy="0 0 0" xyz="0 0 0"/>
           <geometry>
-            <mesh filename="package://usv_sim/meshes/simpleHull3/base_link.dae" scale="${scale} ${scale} ${scale}"/>
+            <mesh filename="package://usv_sim/meshes/naiad/base_link.dae" scale="${scale} ${scale} ${scale}"/>
           </geometry>
         </collision>
 
@@ -56,14 +56,14 @@
     	<visual>
           <origin rpy="0 0 0"  xyz="0 0 ${0*scale}"/>
           <geometry>
-            <mesh filename="package://usv_sim/meshes/simpleHull3/centerRight.dae" scale="${scale} ${scale} ${scale}"/>
+            <mesh filename="package://usv_sim/meshes/naiad/centerRight.dae" scale="${scale} ${scale} ${scale}"/>
           </geometry>
         </visual>
         
         <collision>
           <origin rpy="0 0 0"  xyz="0 0 ${0*scale}"/>
           <geometry>
-           	<mesh filename="package://usv_sim/meshes/simpleHull3/centerRight.dae" scale="${scale} ${scale} ${scale}"/>
+           	<mesh filename="package://usv_sim/meshes/naiad/centerRight.dae" scale="${scale} ${scale} ${scale}"/>
           </geometry>
         </collision>
 
@@ -99,13 +99,13 @@
         <visual>
           <origin rpy="0 0 0"  xyz="0 0 0"/>
           <geometry>
-           	<mesh filename="package://usv_sim/meshes/simpleHull3/backLeft.dae" scale="${scale} ${scale} ${scale}"/>
+           	<mesh filename="package://usv_sim/meshes/naiad/backLeft.dae" scale="${scale} ${scale} ${scale}"/>
           </geometry>
         </visual>
         <collision>
           <origin rpy="0 0 0"  xyz="0 0 0"/>
           <geometry>
-           	<mesh filename="package://usv_sim/meshes/simpleHull3/backLeft.dae" scale="${scale} ${scale} ${scale}"/>
+           	<mesh filename="package://usv_sim/meshes/naiad/backLeft.dae" scale="${scale} ${scale} ${scale}"/>
           </geometry>
         </collision>
 
@@ -140,13 +140,13 @@
     	<visual>
           <origin rpy="0 0 0"  xyz="0 0 0"/>
           <geometry>
-           	<mesh filename="package://usv_sim/meshes/simpleHull3/backRight.dae" scale="${scale} ${scale} ${scale}"/>
+           	<mesh filename="package://usv_sim/meshes/naiad/backRight.dae" scale="${scale} ${scale} ${scale}"/>
           </geometry>
     	</visual>
         <collision>
           <origin rpy="0 0 0"  xyz="0 0 0"/>
           <geometry>
-           	<mesh filename="package://usv_sim/meshes/simpleHull3/backRight.dae" scale="${scale} ${scale} ${scale}"/>
+           	<mesh filename="package://usv_sim/meshes/naiad/backRight.dae" scale="${scale} ${scale} ${scale}"/>
           </geometry>
         </collision>
 
@@ -182,13 +182,13 @@
     	<visual>
     	<origin rpy="0 0 0"  xyz="0 0 0"/>
           <geometry>
-           	<mesh filename="package://usv_sim/meshes/simpleHull3/frontLeft.dae" scale="${scale} ${scale} ${scale}"/>
+           	<mesh filename="package://usv_sim/meshes/naiad/frontLeft.dae" scale="${scale} ${scale} ${scale}"/>
           </geometry>
     	</visual>
         <collision>
           <origin rpy="0 0 0"  xyz="0 0 0"/>
           <geometry>
-           	<mesh filename="package://usv_sim/meshes/simpleHull3/frontLeft.dae" scale="${scale} ${scale} ${scale}"/>
+           	<mesh filename="package://usv_sim/meshes/naiad/frontLeft.dae" scale="${scale} ${scale} ${scale}"/>
           </geometry>
         </collision>
 
@@ -223,13 +223,13 @@
     	<visual>
     		<origin rpy="0 0 0"  xyz="0 0 0"/>
           <geometry>
-           	<mesh filename="package://usv_sim/meshes/simpleHull3/frontRight.dae" scale="${scale} ${scale} ${scale}"/>
+           	<mesh filename="package://usv_sim/meshes/naiad/frontRight.dae" scale="${scale} ${scale} ${scale}"/>
           </geometry>
         </visual>
         <collision>
           <origin rpy="0 0 0"  xyz="${0*scale} ${0*scale} 0"/>
           <geometry>
-           	<mesh filename="package://usv_sim/meshes/simpleHull3/frontRight.dae" scale="${scale} ${scale} ${scale}"/>
+           	<mesh filename="package://usv_sim/meshes/naiad/frontRight.dae" scale="${scale} ${scale} ${scale}"/>
           </geometry>
         </collision>
 
@@ -419,74 +419,5 @@
     </xacro:macro> 
 
     <!-- Sensors -->
-
-    <!-- Hokuyo Laser -->
-    <joint name="hokuyo_joint" type="revolute">
-        <axis xyz="0 1 0" />
-        <origin xyz="0.50 0 0.15" rpy="0 0 0"/>
-        <parent link="base_link"/>
-        <child link="hokuyo_link"/>
-        <limit effort="100" velocity="5" lower="0" upper="0" />
-    </joint>
-
-    <link name="hokuyo_link">
-        <collision name="collision">
-	        <origin xyz="0 0 0" rpy="0 0 0"/>
-	        <geometry>
-	        	<box size="0.1 0.1 0.1"/>
-	        </geometry>
-        </collision>
-
-        <visual name="visual">
-        	<origin xyz="0 0 0" rpy="0 0 0"/>
-        	<geometry>
-        		<mesh filename="package://usv_sim/meshes/simpleHull3/box.dae" scale="0.1 0.1 0.1"/>
-        		
-        	</geometry>
-        	
-        </visual>
-
-        <inertial>
-        <mass value="1e-5" />
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
-        </inertial>
-    </link>
-
-    <gazebo reference="hokuyo_link">
-        <sensor type="gpu_ray" name="head_hokuyo_sensor">
-        <pose>0 0 0 0 0 0</pose>
-        <visualize>false</visualize>
-        <update_rate>40</update_rate>
-        <ray>
-        <scan>
-        <horizontal>
-        <samples>720</samples>
-        <resolution>1</resolution>
-        <min_angle>-1.570796</min_angle>
-        <max_angle>1.570796</max_angle>
-        </horizontal>
-        </scan>
-        <range>
-        <min>0.10</min>
-        <max>30.0</max>
-        <resolution>0.01</resolution>
-        </range>
-        <noise>
-        <type>gaussian</type>
-        <!-- Noise parameters based on published spec for Hokuyo laser
-        achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
-        stddev of 0.01m will put 99.7% of samples within 0.03m of the true
-        reading. -->
-        <mean>0.0</mean>
-        <stddev>0.01</stddev>
-        </noise>
-        </ray>
-        <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
-        <topicName>scan</topicName>
-        <frameName>base_laser</frameName>
-        </plugin>
-        </sensor>
-    </gazebo>
 
 </xacro>
