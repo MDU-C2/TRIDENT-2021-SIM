@@ -31,8 +31,7 @@
     </gazebo>  
 
     <!-- Define two steering thrusters, with assumed force control in Z-direction -->
-    
-    <xacro:thruster_link name="fwd_left"  xyz="-0.3 0 -0.1" rpy="0 ${-PI/2-0.26} 0" rotationAxis="1 0 0" lowerLimit="0" upperLimit="0" parentLink="back_l_link"/>
-    <xacro:thruster_link name="fwd_right" xyz="-0.3 0 -0.1" rpy="0 ${-PI/2-0.26} 0" rotationAxis="1 0 0" lowerLimit="0" upperLimit="0" parentLink="back_r_link"/>
+    <xacro:thruster_link name="fwd_left"  xyz="0.005 0.0755 0" rpy="0 ${PI/2} 0" rotationAxis="1 0 0" lowerLimit="0" upperLimit="0" parentLink="base_link" thruster_scale="0.015"/>
+    <xacro:thruster_link name="fwd_right" xyz="0.005 -0.0755 0" rpy="0 ${PI/2} 0" rotationAxis="1 0 0" lowerLimit="0" upperLimit="0" parentLink="center_r_link" thruster_scale="0.015"/>
        
 </robot>
