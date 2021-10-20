@@ -8,7 +8,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/simpleHull3/base_link.obj" scale="0.21 0.21 0.21"/>
+        <mesh filename="meshes/naiad/base_link.dae" scale="0.21 0.21 0.21"/>
       </geometry>
     </visual>
     </link>
@@ -16,7 +16,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0.0"/>
       <geometry>
-        <mesh filename="meshes/simpleHull3/centerRight.obj" scale="0.21 0.21 0.21"/>
+        <mesh filename="meshes/naiad/centerRight.dae" scale="0.21 0.21 0.21"/>
       </geometry>
     </visual>
     </link>
@@ -32,7 +32,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/simpleHull3/backLeft.obj" scale="0.21 0.21 0.21"/>
+        <mesh filename="meshes/naiad/backLeft.dae" scale="0.21 0.21 0.21"/>
       </geometry>
     </visual>
     </link>
@@ -48,7 +48,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/simpleHull3/backRight.obj" scale="0.21 0.21 0.21"/>
+        <mesh filename="meshes/naiad/backRight.dae" scale="0.21 0.21 0.21"/>
       </geometry>
     </visual>
     </link>
@@ -64,7 +64,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/simpleHull3/frontLeft.obj" scale="0.21 0.21 0.21"/>
+        <mesh filename="meshes/naiad/frontLeft.dae" scale="0.21 0.21 0.21"/>
       </geometry>
     </visual>
     </link>
@@ -80,7 +80,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="meshes/simpleHull3/frontRight.obj" scale="0.21 0.21 0.21"/>
+        <mesh filename="meshes/naiad/frontRight.dae" scale="0.21 0.21 0.21"/>
       </geometry>
     </visual>
     </link>
