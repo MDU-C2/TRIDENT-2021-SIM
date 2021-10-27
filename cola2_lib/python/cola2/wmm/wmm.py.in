@@ -1,0 +1,97 @@
+# -*- coding: utf-8 -*-
+# Copyright (c) 2020 Iqua Robotics SL - All Rights Reserved
+#
+# This file is subject to the terms and conditions defined in file
+# 'LICENSE.txt', which is part of this source code package.
+
+"""
+Module that contains functions related to the World Magnetic Model.
+"""
+
+import ctypes as ct
+
+
+def compute_magnetic_declination_deg(latitude, longitude, year, month, day):
+    """
+    This function returns the magnetic declination in degrees given the latitude and longitude in degrees,
+    and the date. Geoid height is assumed.
+
+    :param latitude: Latitude in degrees [-90.0, 90.0].
+    :type latitude: float
+    :param longitude: Longitude in degrees [-180.0, 180.0].
+    :type longitude: float
+    :param year: Year (must match the available years of the magnetic model).
+    :type year: int
+    :param month: Month [1, 12].
+    :type month: int
+    :param day: Day (range according to month and year).
+    :type day: int
+
+    :return: Returns the magnetic declination in degrees.
+    :rtype: float
+    """
+    libwmm = ct.cdll.LoadLibrary("@INSTALL_LIB_DIR@/libcola2_wmmc.so")
+    libwmm.computeMagneticDeclinationDeg.restype = ct.c_int
+    declination = ct.c_double(0.0)
+    error = libwmm.computeMagneticDeclinationDeg(ct.byref(declination),
+                                                 ct.c_double(latitude),
+                                                 ct.c_double(longitude),
+                                                 ct.c_int(year),
+                                                 ct.c_int(month),
+                                                 ct.c_int(day))
+    if error == -1:  # TODO: find a way to get this from the c code to avoid duplication
+        raise Exception("MAGNETIC_DECLINATION_LATITUDE_OUT_OF_RANGE")
+    elif error == -2:
+        raise Exception("MAGNETIC_DECLINATION_LONGITUDE_OUT_OF_RANGE")
+    elif error == -3:
+        raise Exception("MAGNETIC_DECLINATION_COF_DATA_NOT_FOUND")
+    elif error == -4:
+        raise Exception("MAGNETIC_DECLINATION_BAD_ALLOCATION")
+    elif error == -5:
+        raise Exception("MAGNETIC_DECLINATION_INVALID_DATE")
+    elif error == -6:
+        raise Exception("MAGNETIC_DECLINATION_INVALID_YEAR")
+    return float(declination.value)
+
+
+def compute_magnetic_declination(latitude, longitude, year, month, day):
+    """
+    This function returns the magnetic declination in radians given the latitude and longitude in radians,
+    and the date. Geoid height is assumed.
+
+    :param latitude: Latitude in radians [-PI/2, PI/2].
+    :type latitude: float
+    :param longitude: Longitude in radians [-PI, PI].
+    :type longitude: float
+    :param year: Year (must match the available years of the magnetic model).
+    :type year: int
+    :param month: Month [1, 12].
+    :type month: int
+    :param day: Day (range according to month and year).
+    :type day: int
+
+    :return: Returns the magnetic declination in radians.
+    :rtype: float
+    """
+    libwmm = ct.cdll.LoadLibrary("@INSTALL_LIB_DIR@/libcola2_wmmc.so")
+    libwmm.computeMagneticDeclination.restype = ct.c_int
+    declination = ct.c_double(0.0)
+    error = libwmm.computeMagneticDeclination(ct.byref(declination),
+                                              ct.c_double(latitude),
+                                              ct.c_double(longitude),
+                                              ct.c_int(year),
+                                              ct.c_int(month),
+                                              ct.c_int(day))
+    if error == -1:  # TODO: find a way to get this from the c code to avoid duplication
+        raise Exception("MAGNETIC_DECLINATION_LATITUDE_OUT_OF_RANGE")
+    elif error == -2:
+        raise Exception("MAGNETIC_DECLINATION_LONGITUDE_OUT_OF_RANGE")
+    elif error == -3:
+        raise Exception("MAGNETIC_DECLINATION_COF_DATA_NOT_FOUND")
+    elif error == -4:
+        raise Exception("MAGNETIC_DECLINATION_BAD_ALLOCATION")
+    elif error == -5:
+        raise Exception("MAGNETIC_DECLINATION_INVALID_DATE")
+    elif error == -6:
+        raise Exception("MAGNETIC_DECLINATION_INVALID_YEAR")
+    return float(declination.value)

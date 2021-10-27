@@ -1,0 +1,37 @@
+# This is a sample build configuration for C++ Make.
+# Check our guides at https://confluence.atlassian.com/x/5Q4SMw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+
+complieScript: &compileScript
+  script:
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make -j4
+    - make install
+
+ubuntu18Step: &ubuntu18Step
+  step:
+    name: Build Ubuntu 18.04
+    image: iquarobotics/cola2:ubuntu_18.04
+    <<: *compileScript
+
+ubuntu20Step: &ubuntu20Step
+  step:
+    # size: 2x # all steps in this repo get 8GB of memory
+    name: Build Ubuntu 20.04
+    image: iquarobotics/cola2:ubuntu_20.04
+    <<: *compileScript
+
+pipelines:
+  custom:
+    ubuntuBuildAll:
+      - <<: *ubuntu18Step
+      - <<: *ubuntu20Step
+
+  branches:
+    '{release/*,hotfix/*,master}':
+      - <<: *ubuntu18Step
+      - <<: *ubuntu20Step
