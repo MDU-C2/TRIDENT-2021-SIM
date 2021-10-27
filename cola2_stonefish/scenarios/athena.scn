@@ -5,8 +5,9 @@
       <!--
       BUIlDING THE ROBOT FROM PARTS
       -->
-			<external_part name="frame" type="model" physics="submerged" buoyant="true">
+			<external_part name="frame" type="model" physics="aerodynamic">
 				<physical>
+				<thickness value="0.003"/>
           <mesh filename="athena/athena2.obj" scale="1.0"/>
 					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				</physical>
@@ -14,39 +15,69 @@
           <mesh filename="athena/athena2.obj" scale="1.0"/>
 					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				</visual>
-				<material name="AlmostNeutral"/>
+				<material name="Neutral"/>
 				<look name="gray"/>
-				<compound_transform rpy="3.1416 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 			</external_part>
 
-			<!--
-			<internal_part name="BatteryCylinder" type="cylinder" physics="submerged" buoyant="true">
-				<dimensions radius="0.13" height="0.6"/>
+			
+			<internal_part name="LeftCylinder" type="cylinder" physics="floating" buoyant="true">
+				<dimensions radius="0.0425" height="0.72"/>
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				<material name="Neutral"/>
-				<mass value="71.0"/>
+				<mass value="1"/>
 				<look name="manipulator"/>
-				<compound_transform rpy="0.0 1.571 0.0" xyz="-0.099 0.0 0.361"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="-0.22 0.0 0.04"/>
 			</internal_part>
 
-			<internal_part name="PortCylinder" type="cylinder" physics="submerged" buoyant="true">
-				<dimensions radius="0.13" height="1.0"/>
+			<internal_part name="RightCylinder" type="cylinder" physics="floating" buoyant="true">
+				<dimensions radius="0.0425" height="0.72"/>
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				<material name="Neutral"/>
-				<mass value="20.0"/>
+				<mass value="1"/>
 				<look name="manipulator"/>
-				<compound_transform rpy="0.0 1.571 0.0" xyz="-0.049 -0.35 -0.339"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="0.22 0.0 0.04"/>
 			</internal_part>
 
-			<internal_part name="StarboardCylinder" type="cylinder" physics="submerged" buoyant="true">
-				<dimensions radius="0.13" height="1.0"/>
+			<internal_part name="Box" type="box" physics="surface" buoyant="false">
+				<dimensions xyz="0.26 0.326 0.085"/>
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				<material name="Neutral"/>
-				<mass value="20.0"/>
+				<mass value="2.5"/>
 				<look name="manipulator"/>
-				<compound_transform rpy="0.0 1.571 0.0" xyz="-0.049 0.35 -0.339"/>
+				<compound_transform rpy="0.0 0.0 1.571" xyz="0.0 0.0 -0.07"/>
 			</internal_part>
-			-->
+
+			<external_part name="right_duct" type="model" physics="surface">
+				<physical>
+					<mesh filename="girona500/duct_phy.obj" scale="0.6"/>
+					<thickness value="0.003"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</physical>
+				<visual>
+					<mesh filename="girona500/duct.obj" scale="0.6"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</visual>
+				<material name="Aluminium"/>
+				<look name="black"/>
+				<compound_transform rpy="1.571 0.0 -1.571" xyz="0.22 -0.11 0.15"/>
+			</external_part>
+
+			<external_part name="left_duct" type="model" physics="surface">
+				<physical>
+					<mesh filename="girona500/duct_phy.obj" scale="0.6"/>
+					<thickness value="0.003"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</physical>
+				<visual>
+					<mesh filename="girona500/duct.obj" scale="0.6"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</visual>
+				<material name="Aluminium"/>
+				<look name="black"/>
+				<compound_transform rpy="1.571 0.0 -1.571" xyz="-0.22 -0.11 0.15"/>
+			</external_part>
+			
 		</base_link>
 
       <!--
@@ -54,7 +85,7 @@
       -->
     <actuator name="thr_right" type="thruster">
       <link name="Vehicle"/>
-      <origin rpy="0.0 0.0 -1.571" xyz="-0.18 0.22 0.08"/>
+      <origin rpy="0.0 0.0 -1.571" xyz="0.22 -0.11 0.15"/>
       <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="1000.0" inverted="true"/>
       <propeller diameter="0.75" right="true">
         <mesh filename="athena/propeller.obj" scale="0.6"/>
@@ -65,7 +96,7 @@
 
     <actuator name="thr_left" type="thruster">
       <link name="Vehicle"/>
-      <origin rpy="0.0 0.0 -1.571" xyz="0.18 0.22 0.08"/>
+      <origin rpy="0.0 0.0 -1.571" xyz="-0.22 -0.11 0.15"/>
       <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="1000.0" inverted="true"/>
       <propeller diameter="0.75" right="true">
         <mesh filename="athena/propeller.obj" scale="0.6"/>

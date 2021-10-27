@@ -89,12 +89,14 @@
 	-->
 
         <!-- Throttle messages -->
+        <!--
         <node name="navigation_throttle" pkg="topic_tools" type="throttle" args="messages navigator/navigation 4.0"/>
         <node name="odometry_throttle" pkg="topic_tools" type="throttle" args="messages navigator/odometry 4.0"/>
         <node name="merged_world_waypoint_req_throttle" pkg="topic_tools" type="throttle" args="messages controller/merged_world_waypoint_req 2.0"/>
         <node name="merged_body_velocity_req_throttle" pkg="topic_tools" type="throttle" args="messages controller/merged_body_velocity_req 2.0"/>
         <node name="merged_body_force_req_throttle" pkg="topic_tools" type="throttle" args="messages controller/merged_body_force_req 2.0"/>
         <node name="thruster_setpoints_throttle" pkg="topic_tools" type="throttle" args="messages setpoints_selector/thruster_setpoints 4.0"/>
+        -->
 
         <!-- GUI mission interface -->
 	<!--
