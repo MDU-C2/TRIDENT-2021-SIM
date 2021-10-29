@@ -24,8 +24,8 @@
 //
 
 #include <ros/ros.h>
-#include <Stonefish/core/GraphicalSimulationApp.h>
-#include <Stonefish/utils/SystemUtil.hpp>
+#include <core/GraphicalSimulationApp.h>
+#include <utils/SystemUtil.hpp>
 #include "stonefish_ros/ROSSimulationManager.h"
 
 int main(int argc, char **argv)
@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 	ros::init(argc, argv, "parsed_simulator", ros::init_options::NoSigintHandler);
 
     //Check number of command line arguments
-	if(argc < 7)
+	if(argc < 8)
 	{
 		ROS_FATAL("Not enough command line arguments provided!");
 		return 1;
@@ -77,6 +77,8 @@ int main(int argc, char **argv)
         s.ssr = sf::RenderQuality::MEDIUM;
     }
 
+    std::string shaderPath = std::string(argv[7]) + "/";
+
     sf::HelperSettings h;
     h.showFluidDynamics = false;
     h.showCoordSys = false;
@@ -86,7 +88,7 @@ int main(int argc, char **argv)
     h.showForces = false;
 	
 	sf::ROSSimulationManager manager(rate, scenarioPath);
-    sf::GraphicalSimulationApp app("Stonefish Simulator", dataDirPath, s, h, &manager); 
+    sf::GraphicalSimulationApp app("Stonefish Simulator", dataDirPath, s, h, &manager, shaderPath); 
 	app.Run();
 
 	return 0;

@@ -27,21 +27,21 @@
 #include "stonefish_ros/ROSSimulationManager.h"
 #include "stonefish_ros/ROSInterface.h"
 
-#include <Stonefish/core/Robot.h>
-#include <Stonefish/entities/AnimatedEntity.h>
-#include <Stonefish/entities/forcefields/Uniform.h>
-#include <Stonefish/entities/forcefields/Jet.h>
-#include <Stonefish/actuators/Actuator.h>
-#include <Stonefish/actuators/Light.h>
-#include <Stonefish/actuators/Servo.h>
-#include <Stonefish/sensors/ScalarSensor.h>
-#include <Stonefish/sensors/vision/ColorCamera.h>
-#include <Stonefish/sensors/vision/DepthCamera.h>
-#include <Stonefish/sensors/vision/Multibeam2.h>
-#include <Stonefish/sensors/vision/FLS.h>
-#include <Stonefish/sensors/vision/SSS.h>
-#include <Stonefish/sensors/vision/MSIS.h>
-#include <Stonefish/comms/Comm.h>
+#include <core/Robot.h>
+#include <entities/AnimatedEntity.h>
+#include <entities/forcefields/Uniform.h>
+#include <entities/forcefields/Jet.h>
+#include <actuators/Actuator.h>
+#include <actuators/Light.h>
+#include <actuators/Servo.h>
+#include <sensors/ScalarSensor.h>
+#include <sensors/vision/ColorCamera.h>
+#include <sensors/vision/DepthCamera.h>
+#include <sensors/vision/Multibeam2.h>
+#include <sensors/vision/FLS.h>
+#include <sensors/vision/SSS.h>
+#include <sensors/vision/MSIS.h>
+#include <comms/Comm.h>
 #include <std_msgs/Float64.h>
 #include <geometry_msgs/Transform.h>
 #include <sensor_msgs/FluidPressure.h>
@@ -519,7 +519,6 @@ Sensor* ROSScenarioParser::ParseSensor(XMLElement* element, const std::string& n
                         break;
 
                     case ScalarSensorType::MULTIBEAM:
-                    case ScalarSensorType::PROFILER:
                         pubs[sensorName] = nh.advertise<sensor_msgs::LaserScan>(topicStr, queueSize);
                         break;
 

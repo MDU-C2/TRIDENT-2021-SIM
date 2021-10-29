@@ -1,0 +1,2 @@
+- git: {local-name: cola2_msgs, uri: 'https://bitbucket.org/iquarobotics/cola2_msgs.git', version: master}
+- git: {local-name: stonefish_ros, uri: 'https://github.com/nilsbore/stonefish_ros.git', version: master}

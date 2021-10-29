@@ -20,32 +20,31 @@
 //  stonefish_ros
 //
 //  Created by Patryk Cieslak on 30/11/17.
-//  Copyright (c) 2017-2021 Patryk Cieslak. All rights reserved.
+//  Copyright (c) 2017-2020 Patryk Cieslak. All rights reserved.
 //
 
 #include "stonefish_ros/ROSInterface.h"
 
-#include <Stonefish/sensors/Sample.h>
-#include <Stonefish/sensors/scalar/Accelerometer.h>
-#include <Stonefish/sensors/scalar/Gyroscope.h>
-#include <Stonefish/sensors/scalar/Pressure.h>
-#include <Stonefish/sensors/scalar/DVL.h>
-#include <Stonefish/sensors/scalar/IMU.h>
-#include <Stonefish/sensors/scalar/GPS.h>
-#include <Stonefish/sensors/scalar/ForceTorque.h>
-#include <Stonefish/sensors/scalar/RotaryEncoder.h>
-#include <Stonefish/sensors/scalar/Odometry.h>
-#include <Stonefish/sensors/scalar/Multibeam.h>
-#include <Stonefish/sensors/scalar/Profiler.h>
-#include <Stonefish/sensors/vision/ColorCamera.h>
-#include <Stonefish/sensors/vision/DepthCamera.h>
-#include <Stonefish/sensors/vision/Multibeam2.h>
-#include <Stonefish/sensors/vision/FLS.h>
-#include <Stonefish/sensors/vision/SSS.h>
-#include <Stonefish/sensors/vision/MSIS.h>
-#include <Stonefish/sensors/Contact.h>
-#include <Stonefish/comms/USBL.h>
-#include <Stonefish/entities/AnimatedEntity.h>
+#include <sensors/Sample.h>
+#include <sensors/scalar/Accelerometer.h>
+#include <sensors/scalar/Gyroscope.h>
+#include <sensors/scalar/Pressure.h>
+#include <sensors/scalar/DVL.h>
+#include <sensors/scalar/IMU.h>
+#include <sensors/scalar/GPS.h>
+#include <sensors/scalar/ForceTorque.h>
+#include <sensors/scalar/RotaryEncoder.h>
+#include <sensors/scalar/Odometry.h>
+#include <sensors/scalar/Multibeam.h>
+#include <sensors/vision/ColorCamera.h>
+#include <sensors/vision/DepthCamera.h>
+#include <sensors/vision/Multibeam2.h>
+#include <sensors/vision/FLS.h>
+#include <sensors/vision/SSS.h>
+#include <sensors/vision/MSIS.h>
+#include <sensors/Contact.h>
+#include <comms/USBL.h>
+#include <entities/AnimatedEntity.h>
 
 #include <sensor_msgs/FluidPressure.h>
 #include <sensor_msgs/Imu.h>
@@ -292,72 +291,37 @@ void ROSInterface::PublishEncoder(ros::Publisher& pub, RotaryEncoder* enc)
     pub.publish(msg);
 }
 
-void ROSInterface::PublishMultibeam(ros::Publisher& pub, Multibeam* mb)
+void ROSInterface::PublishLaserScan(ros::Publisher& laserScanPub, Multibeam* mbes)
 {
-    Sample sample = mb->getLastSample();
-    SensorChannel channel = mb->getSensorChannelDescription(0);
-    std::vector<Scalar> distances = sample.getData();
+    Sample sample = mbes->getLastSample();
+    SensorChannel channel = mbes->getSensorChannelDescription(0);
+    std::vector<double> distances = sample.getData();
 
-    Scalar angRange = mb->getAngleRange();
+    float angRange = mbes->getAngleRange();
     uint32_t angSteps = distances.size();
 
     sensor_msgs::LaserScan msg;
     msg.header.stamp = ros::Time::now();
-    msg.header.frame_id = mb->getName();
-    
-    msg.angle_min = -angRange/Scalar(2); // start angle of the scan [rad]
-    msg.angle_max = angRange/Scalar(2); // end angle of the scan [rad]
-    msg.angle_increment = angRange/Scalar(angSteps-1); // angular distance between measurements [rad]
-    msg.range_min = channel.rangeMin; // minimum range value [m]
-    msg.range_max = channel.rangeMax; // maximum range value [m]
+    msg.header.frame_id = mbes->getName();
+    msg.angle_min = -angRange/2.; // start angle of the scan [rad]
+    msg.angle_max = angRange/2.; // end angle of the scan [rad]
+    msg.angle_increment = angRange/float(angSteps-1); // angular distance between measurements [rad]
+
     msg.time_increment = 0.; // time between measurements [seconds] - if your scanner is moving, this will be used in interpolating position of 3d points
     msg.scan_time = 0.; // time between scans [seconds]
-    
-    msg.ranges.resize(angSteps); // range data [m] (Note: values < range_min or > range_max should be discarded)
-    for(uint32_t i = 0; i<angSteps; ++i)
-        msg.ranges[i] = distances[i];
 
-    pub.publish(msg);
-}
-
-void ROSInterface::PublishProfiler(ros::Publisher& pub, Profiler* prof)
-{
-    const std::vector<Sample>* hist = prof->getHistory();
-    SensorChannel channel = prof->getSensorChannelDescription(1); // range channel
-
-    sensor_msgs::LaserScan msg;
-    msg.header.stamp = ros::Time::now();
-    msg.header.frame_id = prof->getName();
-    
-    msg.angle_min = hist->front().getValue(0);
-    msg.angle_max = hist->back().getValue(0);
     msg.range_min = channel.rangeMin; // minimum range value [m]
     msg.range_max = channel.rangeMax; // maximum range value [m]
-    msg.angle_increment = hist->size() == 1 ? 0.0 : hist->at(1).getValue(0) - hist->at(0).getValue(0);
-    msg.time_increment = hist->size() == 1 ? 0.0 : hist->at(1).getTimestamp() - hist->at(0).getTimestamp();
-    msg.scan_time = hist->back().getTimestamp() - hist->front().getTimestamp();
-    
-    if(hist->size() == 1) // RVIZ does not display LaserScan with one range
+
+    msg.ranges.resize(angSteps); // range data [m] (Note: values < range_min or > range_max should be discarded)
+    msg.intensities.resize(0); // intensity data [device-specific units].  If your device does not provide intensities, please leave the array empty
+
+    for(uint32_t i = 0; i<angSteps; ++i)
     {
-        msg.ranges.resize(2);
-        msg.intensities.resize(2);
-        msg.ranges[0] = hist->front().getValue(1);
-        msg.intensities[0] = msg.ranges[0] == msg.range_max ? 0.1 : 1.0;
-        msg.ranges[1] = msg.ranges[0];
-        msg.intensities[1] = msg.intensities[0];
-    }
-    else
-    {
-        msg.ranges.resize(hist->size());
-        msg.intensities.resize(hist->size());
-        for(size_t i=0; i<hist->size(); ++i)
-        {
-            msg.ranges[i] = hist->at(i).getValue(1);
-            msg.intensities[i] = msg.ranges[i] == msg.range_max ? 0.1 : 1.0;
-        }
+        msg.ranges[i] = distances[i];
     }
 
-    pub.publish(msg);
+    laserScanPub.publish(msg);
 }
 
 void ROSInterface::PublishPointCloud(ros::Publisher& pointCloudPub, Multibeam2* mb)
@@ -412,7 +376,7 @@ void ROSInterface::PublishPointCloud(ros::Publisher& pointCloudPub, Multibeam2* 
     pointCloudPub.publish(msg);
 }
 
-void ROSInterface::PublishContact(ros::Publisher& pub, Contact* cnt)
+void ROSInterface::PublishContact(ros::Publisher& contactPub, Contact* cnt)
 {
     if(cnt->getHistory().size() == 0)
         return;
@@ -445,10 +409,10 @@ void ROSInterface::PublishContact(ros::Publisher& pub, Contact* cnt)
     msg.color.g = 1.0;
     msg.color.b = 0.0;
     msg.color.a = 1.0;
-    pub.publish(msg);
+    contactPub.publish(msg);
 }
 
-void ROSInterface::PublishUSBL(ros::Publisher& pub, USBL* usbl)
+void ROSInterface::PublishUSBL(ros::Publisher& usblPub, USBL* usbl)
 {
     std::map<uint64_t, std::pair<Scalar, Vector3>>& transPos = usbl->getTransponderPositions();
     if(transPos.size() == 0)
@@ -482,7 +446,7 @@ void ROSInterface::PublishUSBL(ros::Publisher& pub, USBL* usbl)
         msg.markers.push_back(marker);    
     }
 
-    pub.publish(msg);
+    usblPub.publish(msg);
 }
 
 void ROSInterface::PublishTrajectoryState(ros::Publisher& odom, ros::Publisher& iter, AnimatedEntity* anim)

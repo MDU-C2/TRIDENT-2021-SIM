@@ -27,8 +27,8 @@
 #define __Stonefish_ROSSimulationManager__
 
 //Stonefish
-#include <Stonefish/core/SimulationManager.h>
-#include <Stonefish/actuators/VariableBuoyancy.h>
+#include <core/SimulationManager.h>
+#include <actuators/VariableBuoyancy.h>
 //ROS
 #include <ros/ros.h>
 #include <tf/transform_broadcaster.h>

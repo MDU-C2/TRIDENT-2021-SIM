@@ -1,4 +1,5 @@
 ### stonefish_ros package for ROS
+![CI](https://github.com/smarc-project/stonefish_ros/workflows/CI/badge.svg?branch=noetic-devel) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 This package delivers a ROS interface for the _Stonefish_ library. It also includes a standard simulator node, which loads the simulation scenario from a scenario description file (XML). The included parser extends the standard functionality of the _Stonefish_ library to enable ROS style search for files, resolution of arguments as well as a complete message interface. 
 

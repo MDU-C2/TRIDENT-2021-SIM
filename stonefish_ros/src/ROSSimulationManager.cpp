@@ -28,34 +28,34 @@
 #include "stonefish_ros/ROSInterface.h"
 #include "stonefish_ros/ThrusterState.h"
 
-#include <Stonefish/core/Robot.h>
-#include <Stonefish/entities/AnimatedEntity.h>
-#include <Stonefish/entities/animation/ManualTrajectory.h>
-#include <Stonefish/entities/forcefields/Uniform.h>
-#include <Stonefish/entities/forcefields/Jet.h>
-#include <Stonefish/sensors/scalar/Pressure.h>
-#include <Stonefish/sensors/scalar/DVL.h>
-#include <Stonefish/sensors/scalar/Accelerometer.h>
-#include <Stonefish/sensors/scalar/Gyroscope.h>
-#include <Stonefish/sensors/scalar/IMU.h>
-#include <Stonefish/sensors/scalar/GPS.h>
-#include <Stonefish/sensors/scalar/ForceTorque.h>
-#include <Stonefish/sensors/scalar/RotaryEncoder.h>
-#include <Stonefish/sensors/scalar/Odometry.h>
-#include <Stonefish/sensors/vision/ColorCamera.h>
-#include <Stonefish/sensors/vision/DepthCamera.h>
-#include <Stonefish/sensors/scalar/Multibeam.h>
-#include <Stonefish/sensors/vision/Multibeam2.h>
-#include <Stonefish/sensors/vision/FLS.h>
-#include <Stonefish/sensors/vision/SSS.h>
-#include <Stonefish/sensors/vision/MSIS.h>
-#include <Stonefish/sensors/Contact.h>
-#include <Stonefish/comms/USBL.h>
-#include <Stonefish/actuators/Thruster.h>
-#include <Stonefish/actuators/Propeller.h>
-#include <Stonefish/actuators/Rudder.h>
-#include <Stonefish/actuators/Servo.h>
-#include <Stonefish/utils/SystemUtil.hpp>
+#include <core/Robot.h>
+#include <entities/AnimatedEntity.h>
+#include <entities/animation/ManualTrajectory.h>
+#include <entities/forcefields/Uniform.h>
+#include <entities/forcefields/Jet.h>
+#include <sensors/scalar/Pressure.h>
+#include <sensors/scalar/DVL.h>
+#include <sensors/scalar/Accelerometer.h>
+#include <sensors/scalar/Gyroscope.h>
+#include <sensors/scalar/IMU.h>
+#include <sensors/scalar/GPS.h>
+#include <sensors/scalar/ForceTorque.h>
+#include <sensors/scalar/RotaryEncoder.h>
+#include <sensors/scalar/Odometry.h>
+#include <sensors/vision/ColorCamera.h>
+#include <sensors/vision/DepthCamera.h>
+#include <sensors/scalar/Multibeam.h>
+#include <sensors/vision/Multibeam2.h>
+#include <sensors/vision/FLS.h>
+#include <sensors/vision/SSS.h>
+#include <sensors/vision/MSIS.h>
+#include <sensors/Contact.h>
+#include <comms/USBL.h>
+#include <actuators/Thruster.h>
+#include <actuators/Propeller.h>
+#include <actuators/Rudder.h>
+#include <actuators/Servo.h>
+#include <utils/SystemUtil.hpp>
 
 #include <ros/file_log.h>
 
@@ -193,11 +193,7 @@ void ROSSimulationManager::SimulationStepCompleted(Scalar timeStep)
                     break;
 
                 case ScalarSensorType::MULTIBEAM:
-                    ROSInterface::PublishMultibeam(pubs[sensor->getName()], (Multibeam*)sensor);
-                    break;
-
-                case ScalarSensorType::PROFILER:
-                    ROSInterface::PublishProfiler(pubs[sensor->getName()], (Profiler*)sensor);
+                    ROSInterface::PublishLaserScan(pubs[sensor->getName()], (Multibeam*)sensor);
                     break;
 
                 default:
@@ -263,8 +259,12 @@ void ROSSimulationManager::SimulationStepCompleted(Scalar timeStep)
     //////////////////////////////////////WORLD TRANSFORMS/////////////////////////////////////////
     for(size_t i=0; i<rosRobots.size(); ++i)
     {
-        if(rosRobots[i]->publishBaseLinkTransform)
-            ROSInterface::PublishTF(br, rosRobots[i]->robot->getTransform(), ros::Time::now(), "world_ned", rosRobots[i]->robot->getName() + "/base_link");
+        if (rosRobots[i]->publishBaseLinkTransform)
+        {
+            Transform transform = rosRobots[i]->robot->getTransform();
+            transform.setRotation(transform.getRotation()*btQuaternion(0.0, 0.0, 1.5708));
+            sf::ROSInterface::PublishTF(br, transform, ros::Time::now(), "world_ned", "gt/" + rosRobots[i]->robot->getName() + "/base_link");
+        }
     }
 
     //////////////////////////////////////SERVOS(JOINTS)/////////////////////////////////////////
