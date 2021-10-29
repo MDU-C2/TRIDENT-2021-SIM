@@ -5,7 +5,8 @@
       <!--
       BUIlDING THE ROBOT FROM PARTS
       -->
-			<external_part name="frame" type="model" physics="aerodynamic">
+      <!--
+			<external_part name="frame" type="model" physics="surface">
 				<physical>
 				<thickness value="0.003"/>
           <mesh filename="athena/athena2.obj" scale="1.0"/>
@@ -19,32 +20,73 @@
 				<look name="gray"/>
 				<compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 			</external_part>
+      -->
 
 			
-			<internal_part name="LeftCylinder" type="cylinder" physics="floating" buoyant="true">
+			<external_part name="LeftCylinder" type="cylinder" physics="submerged" buoyant="false">
 				<dimensions radius="0.0425" height="0.72"/>
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				<material name="Neutral"/>
 				<mass value="1"/>
-				<look name="manipulator"/>
+				<look name="gray"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="-0.22 0.0 0.04"/>
+			</external_part>
+
+			<external_part name="RightCylinder" type="cylinder" physics="submerged" buoyant="false">
+				<dimensions radius="0.0425" height="0.72"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Neutral"/>
+				<mass value="1"/>
+				<look name="gray"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="0.22 0.0 0.04"/>
+			</external_part>
+
+			<internal_part name="LeftCylinderInternal" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.04" height="0.72"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Air"/>
+				<look name="gray"/>
 				<compound_transform rpy="0.0 1.571 1.571" xyz="-0.22 0.0 0.04"/>
 			</internal_part>
 
-			<internal_part name="RightCylinder" type="cylinder" physics="floating" buoyant="true">
-				<dimensions radius="0.0425" height="0.72"/>
+			<internal_part name="RightCylinderInternal" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.04" height="0.72"/>
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-				<material name="Neutral"/>
-				<mass value="1"/>
-				<look name="manipulator"/>
+				<material name="Air"/>
+				<look name="gray"/>
 				<compound_transform rpy="0.0 1.571 1.571" xyz="0.22 0.0 0.04"/>
 			</internal_part>
 
-			<internal_part name="Box" type="box" physics="surface" buoyant="false">
+			<external_part name="Frame1" type="box" physics="aerodynamic" buoyant="false">
+				<dimensions xyz="0.02 0.44 0.02"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Aluminium"/>
+				<look name="gray"/>
+				<compound_transform rpy="0.0 0.0 1.571" xyz="0.0 0.13 -0.01"/>
+			</external_part>
+
+			<external_part name="Frame2" type="box" physics="aerodynamic" buoyant="false">
+				<dimensions xyz="0.02 0.44 0.02"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Aluminium"/>
+				<look name="gray"/>
+				<compound_transform rpy="0.0 0.0 1.571" xyz="0.0 -0.13 -0.01"/>
+			</external_part>
+
+			<external_part name="Box" type="box" physics="aerodynamic" buoyant="false">
 				<dimensions xyz="0.26 0.326 0.085"/>
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				<material name="Neutral"/>
-				<mass value="2.5"/>
-				<look name="manipulator"/>
+				<mass value="1"/>
+				<look name="gray"/>
+				<compound_transform rpy="0.0 0.0 1.571" xyz="0.0 0.0 -0.07"/>
+			</external_part>
+
+			<internal_part name="Box" type="box" physics="surface" buoyant="false">
+				<dimensions xyz="0.25 0.321 0.08"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Air"/>
+				<look name="gray"/>
 				<compound_transform rpy="0.0 0.0 1.571" xyz="0.0 0.0 -0.07"/>
 			</internal_part>
 
@@ -58,7 +100,7 @@
 					<mesh filename="girona500/duct.obj" scale="0.6"/>
 					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				</visual>
-				<material name="Aluminium"/>
+				<material name="Neutral"/>
 				<look name="black"/>
 				<compound_transform rpy="1.571 0.0 -1.571" xyz="0.22 -0.11 0.15"/>
 			</external_part>
@@ -73,7 +115,7 @@
 					<mesh filename="girona500/duct.obj" scale="0.6"/>
 					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				</visual>
-				<material name="Aluminium"/>
+				<material name="Neutral"/>
 				<look name="black"/>
 				<compound_transform rpy="1.571 0.0 -1.571" xyz="-0.22 -0.11 0.15"/>
 			</external_part>
@@ -86,8 +128,8 @@
     <actuator name="thr_right" type="thruster">
       <link name="Vehicle"/>
       <origin rpy="0.0 0.0 -1.571" xyz="0.22 -0.11 0.15"/>
-      <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="1000.0" inverted="true"/>
-      <propeller diameter="0.75" right="true">
+      <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="3500.0" inverted="true"/>
+      <propeller diameter="0.76" right="true">
         <mesh filename="athena/propeller.obj" scale="0.6"/>
         <material name="Neutral"/>
         <look name="black"/>
@@ -97,8 +139,8 @@
     <actuator name="thr_left" type="thruster">
       <link name="Vehicle"/>
       <origin rpy="0.0 0.0 -1.571" xyz="-0.22 -0.11 0.15"/>
-      <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="1000.0" inverted="true"/>
-      <propeller diameter="0.75" right="true">
+      <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="3500.0" inverted="true"/>
+      <propeller diameter="0.76" right="true">
         <mesh filename="athena/propeller.obj" scale="0.6"/>
         <material name="Neutral"/>
         <look name="black"/>
@@ -114,13 +156,6 @@
 			<ros_publisher topic="/athena/dynamics/odometry"/>
 		</sensor>
 
-		<sensor name="pressure" type="pressure" rate="5.0">
-			<link name="Vehicle"/>
-			<origin rpy="0.0 0.0 0.0" xyz="0.04 -0.27 0.01"/>
-			<noise pressure="5.0"/>
-			<ros_publisher topic="/athena/navigator/pressure"/>
-		</sensor>
-
 		<sensor name="imu_filter" type="imu" rate="20.0">
 			<link name="Vehicle"/>
 			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
@@ -134,6 +169,12 @@
 			<noise ned_position="0.5"/>
 			<ros_publisher topic="/athena/navigator/gps"/>
 		</sensor>
+
+    <comm name="modem" device_id="2" type="acoustic_modem">
+      <specs horizontal_fov="360.0" vertical_fov="360.0" range="1000.0"/>
+      <connect device_id="1" occlusion_test="false"/>
+      <world_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.2"/>
+    </comm>
 
 		<world_transform rpy="0.0 0.0 0.0" xyz="$(arg position)"/>
 		
