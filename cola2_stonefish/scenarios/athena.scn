@@ -171,9 +171,10 @@
 		</sensor>
 
     <comm name="modem" device_id="2" type="acoustic_modem">
+			<link name="Vehicle"/>
       <specs horizontal_fov="360.0" vertical_fov="360.0" range="1000.0"/>
       <connect device_id="1" occlusion_test="false"/>
-      <world_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.2"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.2"/>
     </comm>
 
 		<world_transform rpy="0.0 0.0 0.0" xyz="$(arg position)"/>

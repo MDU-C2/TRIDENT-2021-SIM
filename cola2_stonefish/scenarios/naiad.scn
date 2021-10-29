@@ -362,10 +362,10 @@
 			<ros_publisher topic="/naiad/navigator/gps"/>
 		</sensor>
 
-		<comm name="USBL" device_id="1" type="usbl">
+		<comm name="USBL" device_id="1" type="usbl2">
 			<link name="Vehicle"/>
-			<specs horizontal_fov="360.0" vertical_fov="360.0" range="1000.0"/>
-			<connect device_id="2" occlusion_test="true"/>
+			<specs horizontal_fov="360.0" vertical_fov="360.0" range="1000.0" frequency="38000" baseline="0.017"/>
+			<connect device_id="2" occlusion_test="false"/>
 			<autoping rate="0.5"/>
 			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.2"/>
 			<ros_publisher topic="/naiad/navigator/usbl"/>
