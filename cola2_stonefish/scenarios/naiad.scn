@@ -83,6 +83,7 @@
       -->
 
       <!-- motors has 0.0675m offset -->
+      <!--
 			<external_part name="right_duct" type="model" physics="submerged" buoyant="false">
 				<physical>
 					<mesh filename="girona500/duct_phy.obj" scale="0.6"/>
@@ -172,6 +173,7 @@
 				<look name="black"/>
 				<compound_transform rpy="0.0 1.571 3.1416" xyz="0.24 -0.445 0.0"/>
 			</external_part>
+      -->
 
       <!--
 			<external_part name="FrameLeft" type="box" physics="submerged" buoyant="true">
@@ -241,7 +243,7 @@
 			<internal_part name="BodyBoxInternal" type="box" physics="submerged" buoyant="true">
 				<dimensions xyz="0.1 0.25 0.5"/>
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-				<material name="Air"/>
+				<material name="Neutral"/>
 				<look name="manipulator"/>
 				<compound_transform rpy="0.0 1.571 1.571" xyz="0 0 0"/>
 			</internal_part>
