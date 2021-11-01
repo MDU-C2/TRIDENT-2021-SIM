@@ -313,8 +313,8 @@
     <actuator name="thr_back_right" type="thruster">
       <link name="Vehicle"/>
       <origin rpy="0.0 1.571 3.1416" xyz="-0.24 -0.445 0.0"/>
-      <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="1000.0" inverted="true"/>
-      <propeller diameter="0.75" right="true">
+      <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="3500.0" inverted="true"/>
+      <propeller diameter="0.76" right="true">
         <mesh filename="naiad/propeller.obj" scale="0.6"/>
         <material name="Neutral"/>
         <look name="black"/>
@@ -324,8 +324,8 @@
     <actuator name="thr_back_left" type="thruster">
       <link name="Vehicle"/>
       <origin rpy="0.0 1.571 3.1416" xyz="0.24 -0.445 0.0"/>
-      <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="1000.0" inverted="true"/>
-      <propeller diameter="0.75" right="true">
+      <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="3500.0" inverted="true"/>
+      <propeller diameter="0.76" right="true">
         <mesh filename="naiad/propeller.obj" scale="0.6"/>
         <material name="Neutral"/>
         <look name="black"/>
@@ -338,29 +338,36 @@
 		<sensor name="dynamics" type="odometry" rate="30.0">
 			<link name="Vehicle"/>
 			<origin rpy="0.0 0.0 1.571" xyz="0.0 0.0 0.0"/>
-			<ros_publisher topic="/naiad/dynamics/odometry"/>
+			<ros_publisher topic="/naiad/odometry"/>
 		</sensor>
 
 		<sensor name="pressure" type="pressure" rate="5.0">
 			<link name="Vehicle"/>
 			<origin rpy="0.0 0.0 1.571" xyz="0.04 -0.27 0.01"/>
 			<noise pressure="5.0"/>
-			<ros_publisher topic="/naiad/navigator/pressure"/>
+			<ros_publisher topic="/naiad/pressure"/>
 		</sensor>
 
 		<sensor name="imu_filter" type="imu" rate="20.0">
 			<link name="Vehicle"/>
 			<origin rpy="0.0 0.0 1.571" xyz="0.0 0.0 0.0"/>
 			<noise angle="0.000001745" angular_velocity="0.00001745"/>
-			<ros_publisher topic="/naiad/navigator/imu"/>
+			<ros_publisher topic="/naiad/imu"/>
 		</sensor>
 
 		<sensor name="gps" type="gps" rate="1.0">
 			<link name="Vehicle"/>
 			<origin rpy="0.0 0.0 1.571" xyz="0.0 0.0 -0.15"/>
 			<noise ned_position="0.5"/>
-			<ros_publisher topic="/naiad/navigator/gps"/>
+			<ros_publisher topic="/naiad/gps"/>
 		</sensor>
+
+    <sensor name="Cam" rate="30.0" type="camera">
+      <link name="Vehicle"/>
+      <origin xyz="0.0 0.3 0.0" rpy="0.0 0.0 0.0"/>
+      <specs resolution_x="400" resolution_y="400" horizontal_fov="60.0"/>
+			<ros_publisher topic="/naiad/camera"/>
+    </sensor>
 
     <!--
 		<comm name="USBL" device_id="1" type="usbl2">
@@ -379,12 +386,12 @@
 			<connect device_id="2" occlusion_test="false"/>
 			<autoping rate="0.5"/>
 			<origin rpy="0.0 0.0 1.571" xyz="0.0 0.0 -0.2"/>
-			<ros_publisher topic="/naiad/navigator/usbl"/>
+			<ros_publisher topic="/naiad/usbl"/>
 		</comm>
 
 		<world_transform rpy="0.0 0.0 0.0" xyz="$(arg position)"/>
 		
-		<ros_subscriber thrusters="/naiad/controller/thruster_setpoints"/>
-		<ros_publisher thrusters="/naiad/controller/thruster_state"/>
+		<ros_subscriber thrusters="/naiad/thruster_setpoints"/>
+		<ros_publisher thrusters="/naiad/thruster_state"/>
 	</robot>
 </scenario>

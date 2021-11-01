@@ -41,14 +41,12 @@
 		<look name="propeller" gray="1.0" roughness="0.3" texture="naiad/propeller_tex.png"/>
 	</looks>
 
-	<static name="Tank" type="model">
-		<physical>
-			<mesh filename="cirs_tank.obj" scale="1.0"/>
-			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-		</physical>
-		<material name="Rock"/>
-		<look name="tank"/>
-		<world_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+	<static name="Bottom" type="terrain">
+	    <height_map filename="terrain2.png"/>
+	    <dimensions scalex="0.3" scaley="0.3" height="0.5"/>
+	    <material name="Rock"/>
+	    <look name="gray"/>
+	    <world_transform xyz="0.0 0.0 15.0" rpy="0.0 0.0 0.0"/>
 	</static>
 
 	<include file="$(find cola2_stonefish)/scenarios/naiad.scn">

@@ -9,16 +9,5 @@
 
 	<buildtool_depend>catkin</buildtool_depend>
 	<depend>stonefish_ros</depend>
-	<depend>cola2_control</depend>
-	<depend>cola2_nav</depend>
-	<depend>cola2_log</depend>
-	<depend>cola2_safety</depend>
-	<depend>cola2_sim</depend>
-	<depend>cola2_lib_ros</depend>
 	<depend>cola2_msgs</depend>
-	<depend>cola2_girona500</depend>
-	<depend>cola2_sparus2</depend>
-	<depend>girona500_description</depend>
-	<depend>sparus2_description</depend>
-	<depend>eca_5emicro_manipulator_description</depend>
 </package>

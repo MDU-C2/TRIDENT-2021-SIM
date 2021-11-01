@@ -153,21 +153,21 @@
 		<sensor name="dynamics" type="odometry" rate="30.0">
 			<link name="Vehicle"/>
 			<origin rpy="0.0 0.0 1.571" xyz="0.0 0.0 0.0"/>
-			<ros_publisher topic="/athena/dynamics/odometry"/>
+			<ros_publisher topic="/athena/odometry"/>
 		</sensor>
 
 		<sensor name="imu_filter" type="imu" rate="20.0">
 			<link name="Vehicle"/>
 			<origin rpy="0.0 0.0 1.571" xyz="0.0 0.0 0.0"/>
 			<noise angle="0.000001745" angular_velocity="0.00001745"/>
-			<ros_publisher topic="/athena/navigator/imu"/>
+			<ros_publisher topic="/athena/imu"/>
 		</sensor>
 
 		<sensor name="gps" type="gps" rate="1.0">
 			<link name="Vehicle"/>
 			<origin rpy="0.0 0.0 1.571" xyz="0.0 0.0 -0.15"/>
 			<noise ned_position="0.5"/>
-			<ros_publisher topic="/athena/navigator/gps"/>
+			<ros_publisher topic="/athena/gps"/>
 		</sensor>
 
     <comm name="modem" device_id="2" type="acoustic_modem">
@@ -179,7 +179,7 @@
 
 		<world_transform rpy="0.0 0.0 0.0" xyz="$(arg position)"/>
 		
-		<ros_subscriber thrusters="/athena/controller/thruster_setpoints"/>
-		<ros_publisher thrusters="/athena/controller/thruster_state"/>
+		<ros_subscriber thrusters="/athena/thruster_setpoints"/>
+		<ros_publisher thrusters="/athena/thruster_state"/>
 	</robot>
 </scenario>
