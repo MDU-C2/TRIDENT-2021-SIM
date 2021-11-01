@@ -1,2 +1,0 @@
-start_service: '/naiad/captain/enable_keep_position_holonomic'
-stop_service: '/naiad/captain/disable_all_keep_positions'

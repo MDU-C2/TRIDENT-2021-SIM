@@ -1,3 +1,0 @@
-<launch>
-  <test pkg="cola2_safety" type="test_virtual_cage_rule" test-name="test_virtual_cage_rule"/>
-</launch>

@@ -1,3 +1,0 @@
-<launch>
-  <test pkg="cola2_safety" type="test_temperature_rule" test-name="test_temperature_rule"/>
-</launch>

@@ -1,3 +1,0 @@
-<launch>
-  <test pkg="cola2_safety" type="test_watchdog_timer_rule" test-name="test_watchdog_timer_rule"/>
-</launch>
