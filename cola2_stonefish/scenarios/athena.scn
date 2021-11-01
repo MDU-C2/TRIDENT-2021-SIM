@@ -152,20 +152,20 @@
     -->
 		<sensor name="dynamics" type="odometry" rate="30.0">
 			<link name="Vehicle"/>
-			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			<origin rpy="0.0 0.0 1.571" xyz="0.0 0.0 0.0"/>
 			<ros_publisher topic="/athena/dynamics/odometry"/>
 		</sensor>
 
 		<sensor name="imu_filter" type="imu" rate="20.0">
 			<link name="Vehicle"/>
-			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			<origin rpy="0.0 0.0 1.571" xyz="0.0 0.0 0.0"/>
 			<noise angle="0.000001745" angular_velocity="0.00001745"/>
 			<ros_publisher topic="/athena/navigator/imu"/>
 		</sensor>
 
 		<sensor name="gps" type="gps" rate="1.0">
 			<link name="Vehicle"/>
-			<origin rpy="0.0 0.0 0.0" xyz="-0.08 -0.36 -0.19"/>
+			<origin rpy="0.0 0.0 1.571" xyz="0.0 0.0 -0.15"/>
 			<noise ned_position="0.5"/>
 			<ros_publisher topic="/athena/navigator/gps"/>
 		</sensor>
@@ -174,7 +174,7 @@
 			<link name="Vehicle"/>
       <specs horizontal_fov="360.0" vertical_fov="360.0" range="1000.0"/>
       <connect device_id="1" occlusion_test="false"/>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.2"/>
+      <origin rpy="0.0 0.0 1.571" xyz="0.0 0.0 0.1"/>
     </comm>
 
 		<world_transform rpy="0.0 0.0 0.0" xyz="$(arg position)"/>
