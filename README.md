@@ -50,3 +50,48 @@ roslaunch cola2_stonefish naiad_simulation.launch
 roslaunch cola2_stonefish trident_simulation.launch
 ```
 
+**NOTE**: if you dont want to spawn the camera visualization node append `camera_show:=false` at the end of the command.
+
+## Thrusters
+
+The thrusters are controlled through the thruster\_setpoints topic for each vehicle separately.
+The message type is cola2\_msgs/Setpoints which consists of:
+```
+Header header
+float64[] setpoints
+```
+where each setpoint is a value between -1 and 1 and represents the amount of thrust to send to the respective thruster.
+The order of the setpoints is visualized below:
+
+Athena:
+
+```
+[Right] [Left]
+```
+
+Naiad:
+
+```
+[Right] [Left] [Front Right] [Front Left] [Back Right] [Back Left]
+```
+
+## Sensors
+
+The sensors are accessed through their respective topics. The available sensors are listed below:
+
+Athena:
+
+* `/athena/gps`
+* `/athena/imu`
+* `/ahtena/odometry` (actual position)
+
+Naiad:
+
+* `/naiad/gps`
+* `/naiad/imu`
+* `/naiad/pressure`
+* `/naiad/usbl`
+* `/naiad/camera/image\_color`
+* `/naiad/odometry` (actual position)
+
+**NOTE**: The gps does not work under water. The usbl gives the position of Athena relative to itself.
