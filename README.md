@@ -37,17 +37,17 @@ source ~/catkin_ws/devel/setup.bash
 
 * Athena:
 ```
-roslaunch cola2_stonefish athena_simulation.launch
+roslaunch trident_sim athena_simulation.launch
 ```
 
 * Naiad:
 ```
-roslaunch cola2_stonefish naiad_simulation.launch
+roslaunch trident_sim naiad_simulation.launch
 ```
 
 * Trident:
 ```
-roslaunch cola2_stonefish trident_simulation.launch
+roslaunch trident_sim trident_simulation.launch
 ```
 
 **NOTE**: if you dont want to spawn the camera visualization node append `camera_show:=false` at the end of the command.

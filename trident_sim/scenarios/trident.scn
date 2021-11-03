@@ -54,11 +54,11 @@
 	    <world_transform xyz="0.0 0.0 15.0" rpy="0.0 0.0 0.0"/>
 	</static>
 
-	<include file="$(find cola2_stonefish)/scenarios/athena.scn">
+	<include file="$(find trident_sim)/scenarios/athena.scn">
 		<arg name="position" value="0.0 0.0 0.0"/>
 	</include>
 
-	<include file="$(find cola2_stonefish)/scenarios/naiad.scn">
+	<include file="$(find trident_sim)/scenarios/naiad.scn">
 		<arg name="position" value="2.0 2.0 12.0"/>
 	</include>
 </scenario>
