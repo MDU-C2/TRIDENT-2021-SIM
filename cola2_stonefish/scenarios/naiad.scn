@@ -83,7 +83,6 @@
       -->
 
       <!-- motors has 0.0675m offset -->
-      <!--
 			<external_part name="right_duct" type="model" physics="submerged" buoyant="false">
 				<physical>
 					<mesh filename="girona500/duct_phy.obj" scale="0.6"/>
@@ -94,7 +93,7 @@
 					<mesh filename="girona500/duct.obj" scale="0.6"/>
 					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				</visual>
-				<material name="Aluminium"/>
+				<material name="Neutral"/>
 				<look name="black"/>
 				<compound_transform rpy="0.0 3.1416 1.571" xyz="-0.38 0.0576 0.0"/>
 			</external_part>
@@ -109,7 +108,7 @@
 					<mesh filename="girona500/duct.obj" scale="0.6"/>
 					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				</visual>
-				<material name="Aluminium"/>
+				<material name="Neutral"/>
 				<look name="black"/>
 				<compound_transform rpy="0.0 0.0 -1.571" xyz="0.38 0.0576 0.0"/>
 			</external_part>
@@ -124,7 +123,7 @@
 					<mesh filename="girona500/duct.obj" scale="0.6"/>
 					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				</visual>
-				<material name="Aluminium"/>
+				<material name="Neutral"/>
 				<look name="black"/>
 				<compound_transform rpy="0.0 1.571 0.0" xyz="-0.24 0.445 0.0"/>
 			</external_part>
@@ -139,7 +138,7 @@
 					<mesh filename="girona500/duct.obj" scale="0.6"/>
 					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				</visual>
-				<material name="Aluminium"/>
+				<material name="Neutral"/>
 				<look name="black"/>
 				<compound_transform rpy="0.0 1.571 0.0" xyz="0.24 0.445 0.0"/>
 			</external_part>
@@ -154,7 +153,7 @@
 					<mesh filename="girona500/duct.obj" scale="0.6"/>
 					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				</visual>
-				<material name="Aluminium"/>
+				<material name="Neutral"/>
 				<look name="black"/>
 				<compound_transform rpy="0.0 1.571 3.1416" xyz="-0.24 -0.445 0.0"/>
 			</external_part>
@@ -169,49 +168,118 @@
 					<mesh filename="girona500/duct.obj" scale="0.6"/>
 					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				</visual>
-				<material name="Aluminium"/>
+				<material name="Neutral"/>
 				<look name="black"/>
 				<compound_transform rpy="0.0 1.571 3.1416" xyz="0.24 -0.445 0.0"/>
 			</external_part>
-      -->
 
-      <!--
-			<external_part name="FrameLeft" type="box" physics="submerged" buoyant="true">
+			<external_part name="FrameLeft" type="box" physics="submerged" buoyant="false">
 				<dimensions xyz="0.02 0.76 0.02"/>
+					<thickness value="0.005"/>
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				<material name="Aluminium"/>
-        <mass value="10.0"/>
 				<look name="manipulator"/>
 				<compound_transform rpy="0.0 1.571 3.1416" xyz="0.24 0.0 0.0"/>
 			</external_part>
 
-			<external_part name="FrameRight" type="box" physics="submerged" buoyant="true">
+			<internal_part name="floatyLeft1" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="0.24 0.20 0.0"/>
+			</internal_part>
+
+			<internal_part name="floatyLeft2" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="0.24 -0.20 0.0"/>
+			</internal_part>
+
+			<external_part name="FrameRight" type="box" physics="submerged" buoyant="false">
 				<dimensions xyz="0.02 0.76 0.02"/>
+					<thickness value="0.005"/>
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				<material name="Aluminium"/>
-        <mass value="10.0"/>
 				<look name="manipulator"/>
 				<compound_transform rpy="0.0 1.571 3.1416" xyz="-0.24 0.0 0.0"/>
 			</external_part>
 
-			<external_part name="FrameBack" type="box" physics="submerged" buoyant="true">
+			<internal_part name="floatyRight1" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="-0.24 0.20 0.0"/>
+			</internal_part>
+
+			<internal_part name="floatyRight2" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="-0.24 -0.20 0.0"/>
+			</internal_part>
+
+			<external_part name="FrameBack" type="box" physics="submerged" buoyant="false">
 				<dimensions xyz="0.02 0.48 0.02"/>
+					<thickness value="0.005"/>
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				<material name="Aluminium"/>
-        <mass value="10.0"/>
 				<look name="manipulator"/>
 				<compound_transform rpy="0.0 1.571 1.571" xyz="0.0 -0.36 0.0"/>
 			</external_part>
 
-			<external_part name="FrameFront" type="box" physics="submerged" buoyant="true">
+			<internal_part name="floatyBack1" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 0.0" xyz="0.15 -0.36 0.0"/>
+			</internal_part>
+
+			<internal_part name="floatyBack2" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 0.0" xyz="-0.15 -0.36 0.0"/>
+			</internal_part>
+
+			<external_part name="FrameFront" type="box" physics="submerged" buoyant="false">
 				<dimensions xyz="0.02 0.48 0.02"/>
+					<thickness value="0.005"/>
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				<material name="Aluminium"/>
-        <mass value="10.0"/>
 				<look name="manipulator"/>
 				<compound_transform rpy="0.0 1.571 1.571" xyz="0.0 0.36 0.0"/>
 			</external_part>
-      -->
+
+			<internal_part name="floatyFront1" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 0.0" xyz="0.15 0.36 0.0"/>
+			</internal_part>
+
+			<internal_part name="floatyFront2" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 0.0" xyz="-0.15 0.36 0.0"/>
+			</internal_part>
 
 			<external_part name="BodyBox" type="box" physics="submerged" buoyant="true">
 				<thickness value="0.05"/>
@@ -228,7 +296,7 @@
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				<material name="Neutral"/>
 				<look name="manipulator"/>
-				<compound_transform rpy="0.0 1.571 1.571" xyz="-0.2 0.05 -0.1"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="-0.2 0.00 -0.1"/> <!-- -0.2 0.05 -0.1 -->
 			</external_part>
 
 			<external_part name="RightCylinder" type="cylinder" physics="submerged" buoyant="true">
@@ -237,7 +305,7 @@
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				<material name="Neutral"/>
 				<look name="manipulator"/>
-				<compound_transform rpy="0.0 1.571 1.571" xyz="0.2 0.05 -0.1"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="0.2 0.00 -0.1"/> <!-- 0.2 0.05 -0.1 -->
 			</external_part>
 
 			<internal_part name="BodyBoxInternal" type="box" physics="submerged" buoyant="true">
@@ -253,7 +321,7 @@
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				<material name="Air"/>
 				<look name="manipulator"/>
-				<compound_transform rpy="0.0 1.571 1.571" xyz="-0.2 0.05 -0.1"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="-0.2 0.00 -0.1"/> <!-- -0.2 0.05 -0.1 -->
 			</internal_part>
 
 			<internal_part name="RightCylinderInternal" type="cylinder" physics="submerged" buoyant="true">
@@ -261,7 +329,7 @@
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				<material name="Air"/>
 				<look name="manipulator"/>
-				<compound_transform rpy="0.0 1.571 1.571" xyz="0.2 0.05 -0.1"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="0.2 0.00 -0.1"/> <!-- 0.2 0.05 -0.1 -->
 			</internal_part>
 		</base_link>
 
