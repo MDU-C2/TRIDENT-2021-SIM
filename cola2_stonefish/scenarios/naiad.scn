@@ -271,7 +271,7 @@
     <actuator name="thr_right" type="thruster">
       <link name="Vehicle"/>
       <origin rpy="0.0 0.0 -1.571" xyz="-0.38 0.0576 0.0"/>
-      <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="1000.0" inverted="true"/>
+      <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
       <propeller diameter="0.75" right="true">
         <mesh filename="naiad/propeller.obj" scale="0.6"/>
         <material name="Neutral"/>
@@ -282,7 +282,7 @@
     <actuator name="thr_left" type="thruster">
       <link name="Vehicle"/>
       <origin rpy="0.0 0.0 -1.571" xyz="0.38 0.0576 0.0"/>
-      <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="1000.0" inverted="true"/>
+      <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
       <propeller diameter="0.75" right="true">
         <mesh filename="naiad/propeller.obj" scale="0.6"/>
         <material name="Neutral"/>
@@ -293,8 +293,8 @@
     <actuator name="thr_front_right" type="thruster">
       <link name="Vehicle"/>
       <origin rpy="0.0 1.571 0.0" xyz="-0.24 0.445 0.0"/>
-      <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="1000.0" inverted="true"/>
-      <propeller diameter="0.75" right="true">
+      <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
+      <propeller diameter="0.76" right="true">
         <mesh filename="naiad/propeller.obj" scale="0.6"/>
         <material name="Neutral"/>
         <look name="black"/>
@@ -304,8 +304,8 @@
     <actuator name="thr_front_left" type="thruster">
       <link name="Vehicle"/>
       <origin rpy="0.0 1.571 0.0" xyz="0.24 0.445 0.0"/>
-      <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="1000.0" inverted="true"/>
-      <propeller diameter="0.75" right="true">
+      <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
+      <propeller diameter="0.76" right="true">
         <mesh filename="naiad/propeller.obj" scale="0.6"/>
         <material name="Neutral"/>
         <look name="black"/>
@@ -315,7 +315,7 @@
     <actuator name="thr_back_right" type="thruster">
       <link name="Vehicle"/>
       <origin rpy="0.0 1.571 3.1416" xyz="-0.24 -0.445 0.0"/>
-      <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="3500.0" inverted="true"/>
+      <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
       <propeller diameter="0.76" right="true">
         <mesh filename="naiad/propeller.obj" scale="0.6"/>
         <material name="Neutral"/>
@@ -326,7 +326,7 @@
     <actuator name="thr_back_left" type="thruster">
       <link name="Vehicle"/>
       <origin rpy="0.0 1.571 3.1416" xyz="0.24 -0.445 0.0"/>
-      <specs thrust_coeff="0.52" torque_coeff="0.05" max_rpm="3500.0" inverted="true"/>
+      <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
       <propeller diameter="0.76" right="true">
         <mesh filename="naiad/propeller.obj" scale="0.6"/>
         <material name="Neutral"/>
