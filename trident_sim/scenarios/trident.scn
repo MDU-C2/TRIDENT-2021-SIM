@@ -46,6 +46,7 @@
 		<look name="seafloor" rgb="0.0 0.0 0.0" roughness="0.0" texture="terrain2.png"/>
 	</looks>
 
+	<!--
 	<static name="Bottom" type="terrain">
 	    <height_map filename="terrain2.png"/>
 	    <dimensions scalex="0.2" scaley="0.2" height="0.5"/>
@@ -53,6 +54,7 @@
 	    <look name="seafloor"/>
 	    <world_transform xyz="0.0 0.0 15.0" rpy="0.0 0.0 0.0"/>
 	</static>
+	-->
 
 	<include file="$(find trident_sim)/scenarios/athena.scn">
 		<arg name="position" value="0.0 0.0 0.0"/>
