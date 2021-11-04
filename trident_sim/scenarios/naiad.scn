@@ -95,7 +95,7 @@
 				</visual>
 				<material name="Neutral"/>
 				<look name="black"/>
-				<compound_transform rpy="0.0 3.1416 1.571" xyz="-0.38 0.0576 0.0"/>
+				<compound_transform rpy="0.0 0.0 1.571" xyz="-0.38 0.0576 0.0"/>
 			</external_part>
 
 			<external_part name="left_duct" type="model" physics="submerged" buoyant="false">
@@ -110,7 +110,7 @@
 				</visual>
 				<material name="Neutral"/>
 				<look name="black"/>
-				<compound_transform rpy="0.0 0.0 -1.571" xyz="0.38 0.0576 0.0"/>
+				<compound_transform rpy="0.0 3.1416 -1.571" xyz="0.38 0.0576 0.0"/>
 			</external_part>
 
 			<external_part name="front_right_duct" type="model" physics="submerged" buoyant="false">
@@ -125,7 +125,7 @@
 				</visual>
 				<material name="Neutral"/>
 				<look name="black"/>
-				<compound_transform rpy="0.0 1.571 0.0" xyz="-0.24 0.445 0.0"/>
+				<compound_transform rpy="0.0 -1.571 0.0" xyz="-0.24 0.445 0.0"/>
 			</external_part>
 
 			<external_part name="front_left_duct" type="model" physics="submerged" buoyant="false">
@@ -140,7 +140,7 @@
 				</visual>
 				<material name="Neutral"/>
 				<look name="black"/>
-				<compound_transform rpy="0.0 1.571 0.0" xyz="0.24 0.445 0.0"/>
+				<compound_transform rpy="0.0 -1.571 0.0" xyz="0.24 0.445 0.0"/>
 			</external_part>
 
 			<external_part name="back_right_duct" type="model" physics="submerged" buoyant="false">
@@ -155,7 +155,7 @@
 				</visual>
 				<material name="Neutral"/>
 				<look name="black"/>
-				<compound_transform rpy="0.0 1.571 3.1416" xyz="-0.24 -0.445 0.0"/>
+				<compound_transform rpy="0.0 -1.571 3.1416" xyz="-0.24 -0.445 0.0"/>
 			</external_part>
 
 			<external_part name="back_left_duct" type="model" physics="submerged" buoyant="false">
@@ -170,7 +170,7 @@
 				</visual>
 				<material name="Neutral"/>
 				<look name="black"/>
-				<compound_transform rpy="0.0 1.571 3.1416" xyz="0.24 -0.445 0.0"/>
+				<compound_transform rpy="0.0 -1.571 3.1416" xyz="0.24 -0.445 0.0"/>
 			</external_part>
 
 			<external_part name="FrameLeft" type="box" physics="submerged" buoyant="false">
@@ -338,7 +338,7 @@
       -->
     <actuator name="thr_right" type="thruster">
       <link name="Vehicle"/>
-      <origin rpy="0.0 0.0 -1.571" xyz="-0.38 0.0576 0.0"/>
+      <origin rpy="0.0 0.0 1.571" xyz="0.38 0.0576 0.0"/>
       <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
       <propeller diameter="0.75" right="true">
         <mesh filename="naiad/propeller.obj" scale="0.6"/>
@@ -349,7 +349,7 @@
 
     <actuator name="thr_left" type="thruster">
       <link name="Vehicle"/>
-      <origin rpy="0.0 0.0 -1.571" xyz="0.38 0.0576 0.0"/>
+      <origin rpy="0.0 0.0 1.571" xyz="-0.38 0.0576 0.0"/>
       <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
       <propeller diameter="0.75" right="true">
         <mesh filename="naiad/propeller.obj" scale="0.6"/>
@@ -358,20 +358,9 @@
       </propeller>
     </actuator>
 
-    <actuator name="thr_front_right" type="thruster">
-      <link name="Vehicle"/>
-      <origin rpy="0.0 1.571 0.0" xyz="-0.24 0.445 0.0"/>
-      <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
-      <propeller diameter="0.76" right="true">
-        <mesh filename="naiad/propeller.obj" scale="0.6"/>
-        <material name="Neutral"/>
-        <look name="black"/>
-      </propeller>
-    </actuator>
-
     <actuator name="thr_front_left" type="thruster">
       <link name="Vehicle"/>
-      <origin rpy="0.0 1.571 0.0" xyz="0.24 0.445 0.0"/>
+      <origin rpy="0.0 -1.571 0.0" xyz="0.24 0.445 0.0"/>
       <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
       <propeller diameter="0.76" right="true">
         <mesh filename="naiad/propeller.obj" scale="0.6"/>
@@ -380,9 +369,9 @@
       </propeller>
     </actuator>
 
-    <actuator name="thr_back_right" type="thruster">
+    <actuator name="thr_front_right" type="thruster">
       <link name="Vehicle"/>
-      <origin rpy="0.0 1.571 3.1416" xyz="-0.24 -0.445 0.0"/>
+      <origin rpy="0.0 -1.571 0.0" xyz="-0.24 0.445 0.0"/>
       <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
       <propeller diameter="0.76" right="true">
         <mesh filename="naiad/propeller.obj" scale="0.6"/>
@@ -393,7 +382,18 @@
 
     <actuator name="thr_back_left" type="thruster">
       <link name="Vehicle"/>
-      <origin rpy="0.0 1.571 3.1416" xyz="0.24 -0.445 0.0"/>
+      <origin rpy="0.0 -1.571 0.0" xyz="0.24 -0.445 0.0"/>
+      <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
+      <propeller diameter="0.76" right="true">
+        <mesh filename="naiad/propeller.obj" scale="0.6"/>
+        <material name="Neutral"/>
+        <look name="black"/>
+      </propeller>
+    </actuator>
+
+    <actuator name="thr_back_right" type="thruster">
+      <link name="Vehicle"/>
+      <origin rpy="0.0 -1.571 0.0" xyz="-0.24 -0.445 0.0"/>
       <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
       <propeller diameter="0.76" right="true">
         <mesh filename="naiad/propeller.obj" scale="0.6"/>
@@ -434,7 +434,7 @@
 
     <sensor name="Cam" rate="30.0" type="camera">
       <link name="Vehicle"/>
-      <origin xyz="0.0 0.3 0.0" rpy="0.0 0.0 0.0"/>
+      <origin xyz="0.0 0.3 0.0" rpy="0.0 0.0 3.1416"/>
       <specs resolution_x="400" resolution_y="400" horizontal_fov="60.0"/>
 			<ros_publisher topic="/naiad/camera"/>
     </sensor>

@@ -128,7 +128,7 @@
     <actuator name="thr_right" type="thruster">
       <link name="Vehicle"/>
       <origin rpy="0.0 0.0 -1.571" xyz="0.22 -0.11 0.15"/>
-      <specs thrust_coeff="0.5" torque_coeff="0.0" max_rpm="500.0" inverted="true"/>
+      <specs thrust_coeff="0.5" torque_coeff="0.0" max_rpm="200.0" inverted="true"/>
       <propeller diameter="0.76" right="true">
         <mesh filename="athena/propeller.obj" scale="0.6"/>
         <material name="Neutral"/>
@@ -139,7 +139,7 @@
     <actuator name="thr_left" type="thruster">
       <link name="Vehicle"/>
       <origin rpy="0.0 0.0 -1.571" xyz="-0.22 -0.11 0.15"/>
-      <specs thrust_coeff="0.5" torque_coeff="0.0" max_rpm="500.0" inverted="true"/>
+      <specs thrust_coeff="0.5" torque_coeff="0.0" max_rpm="200.0" inverted="true"/>
       <propeller diameter="0.76" right="true">
         <mesh filename="athena/propeller.obj" scale="0.6"/>
         <material name="Neutral"/>
