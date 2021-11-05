@@ -7,7 +7,7 @@
 
   <!-- Start camera node -->
   <group if="$(arg camera_show)">
-    <node name="camera" pkg="image_view" type="image_view" args="image:=/naiad/camera/image_color"/>
+    <node name="camera" pkg="image_view" type="image_view" args="image:=/naiad/simulation/camera/image_color"/>
   </group>
 
   <!-- Run Simulator -->

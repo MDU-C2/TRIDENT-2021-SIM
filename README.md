@@ -72,7 +72,7 @@ Athena:
 Naiad:
 
 ```
-[Right] [Left] [Front Right] [Front Left] [Back Right] [Back Left]
+[Right] [Left] [Front Left] [Front Right] [Back Left] [Back Right]
 ```
 
 ## Sensors
@@ -81,17 +81,17 @@ The sensors are accessed through their respective topics. The available sensors 
 
 Athena:
 
-* `/athena/gps`
-* `/athena/imu`
-* `/ahtena/odometry` (actual position)
+* `/athena/simulation/gps`
+* `/athena/simulation/imu`
+* `/ahtena/simulation/odometry` (actual position)
 
 Naiad:
 
-* `/naiad/gps`
-* `/naiad/imu`
-* `/naiad/pressure`
-* `/naiad/usbl`
-* `/naiad/camera/image\_color`
-* `/naiad/odometry` (actual position)
+* `/naiad/simulation/gps`
+* `/naiad/simulation/imu`
+* `/naiad/simulation/pressure`
+* `/naiad/simulation/usbl`
+* `/naiad/simulation/camera/image_color`
+* `/naiad/simulation/odometry` (actual position)
 
 **NOTE**: The gps does not work under water. The usbl gives the position of Athena relative to itself.
