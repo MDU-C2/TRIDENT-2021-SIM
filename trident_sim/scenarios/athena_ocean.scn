@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <scenario>
 	<environment>
-		<ned latitude="41.7777" longitude="3.0333"/>
+		<ned latitude="59.6175744" longitude="16.5609494"/>
 		<ocean>
 			<water density="1000.0" jerlov="0.2"/>
 		</ocean>
