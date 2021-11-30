@@ -6,27 +6,25 @@
   <!-- Static transform -->
   <node name="world2ned" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 3.1415 world world_ned 100"/>
 
-  <!-- Start camera node -->
-  <group if="$(arg camera_show)">
-    <node name="camera" pkg="image_view" type="image_view" args="image:=/naiad/simulation/camera/image_color"/>
-  </group>
-
   <!-- Run Simulator -->
-    <group if="$(arg gui)">
-  <include file="$(find stonefish_ros)/launch/simulator.launch">
-    <arg name="simulation_data" value="$(find trident_sim)/data"/>
-    <arg name="scenario_description" value="$(find trident_sim)/scenarios/trident.scn"/>
-    <arg name="simulation_rate" value="300.0"/>
-    <arg name="graphics_resolution" value="1200 800"/>
-    <arg name="graphics_quality" value="low"/>
-  </include>
+  <group if="$(arg gui)">
+    <!-- Start camera node -->
+    <group if="$(arg camera_show)">
+    <node name="camera" pkg="image_view" type="image_view" args="image:=/naiad/simulation/camera/image_color"/>
     </group>
-    <group unless="$(arg gui)">
-	<include file="$(find stonefish_ros)/launch/simulator_nogpu.launch">
-        <arg name="simulation_data" value="$(find trident_sim)/data"/>
-        <arg name="scenario_description" value="$(find trident_sim)/scenarios/trident_nocam.scn"/>
-        <arg name="simulation_rate" value="300.0"/>
+    <include file="$(find stonefish_ros)/launch/simulator.launch">
+      <arg name="simulation_data" value="$(find trident_sim)/data"/>
+      <arg name="scenario_description" value="$(find trident_sim)/scenarios/trident.scn"/>
+      <arg name="simulation_rate" value="300.0"/>
+      <arg name="graphics_resolution" value="1200 800"/>
+      <arg name="graphics_quality" value="low"/>
     </include>
-    </group>
-
+  </group>
+  <group unless="$(arg gui)">
+    <include file="$(find stonefish_ros)/launch/simulator_nogpu.launch">
+      <arg name="simulation_data" value="$(find trident_sim)/data"/>
+      <arg name="scenario_description" value="$(find trident_sim)/scenarios/trident_nocam.scn"/>
+      <arg name="simulation_rate" value="300.0"/>
+    </include>
+  </group>
 </launch>

@@ -50,7 +50,7 @@ roslaunch trident_sim naiad_simulation.launch
 roslaunch trident_sim trident_simulation.launch
 ```
 
-**NOTE**: if you dont want to spawn the camera visualization node append `camera_show:=false` at the end of the command.
+**NOTE**: if you dont want to spawn the camera visualization node append `camera_show:=false` at the end of the command. If you dont want graphics for the simulation append `gui:=false` at the end of the command.
 
 ## Thrusters
 
