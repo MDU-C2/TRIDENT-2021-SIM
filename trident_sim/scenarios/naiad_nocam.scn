@@ -1,0 +1,469 @@
+<?xml version="1.0"?>
+<scenario>
+	<robot name="naiad" fixed="false" self_collisions="false">
+		<base_link name="Vehicle" type="compound" physics="submerged">
+      <!--
+      BUIlDING THE ROBOT FROM PARTS
+      -->
+      <!--
+			<external_part name="frame" type="model" physics="surface" buoyant="false">
+				<physical>
+					<mesh filename="naiad/frame.obj" scale="1.0"/>
+					<thickness value="0.005"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</physical>
+				<visual>
+					<mesh filename="naiad/frame.obj" scale="1.0"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</visual>
+				<material name="Aluminium"/>
+				<look name="gray"/>
+				<compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			</external_part>
+
+			<external_part name="batteryTubes" type="model" physics="surface" buoyant="false">
+				<physical>
+					<mesh filename="naiad/batteryTubes.obj" scale="1.0"/>
+					<thickness value="0.003"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</physical>
+				<visual>
+					<mesh filename="naiad/batteryTubes.obj" scale="1.0"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</visual>
+				<material name="Neutral"/>
+				<look name="yellow"/>
+				<compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			</external_part>
+
+			<external_part name="body" type="model" physics="surface" buoyant="false">
+				<physical>
+					<mesh filename="naiad/body.obj" scale="1.0"/>
+					<thickness value="0.03"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</physical>
+				<visual>
+					<mesh filename="naiad/body.obj" scale="1.0"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</visual>
+				<material name="Neutral"/>
+				<look name="green"/>
+				<compound_transform rpy="0.0 0.0 0.0" xyz="-0.0 0.0 0.0"/>
+			</external_part>
+
+			<external_part name="bumpers" type="model" physics="surface" buoyant="false">
+				<physical>
+					<mesh filename="naiad/bumpers.obj" scale="1.0"/>
+					<thickness value="0.003"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</physical>
+				<visual>
+					<mesh filename="naiad/bumpers.obj" scale="1.0"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</visual>
+				<material name="Styrofoam"/>
+				<look name="black"/>
+				<compound_transform rpy="0.0 0.0 0.0" xyz="-0.0 0.0 0.0"/>
+			</external_part>
+
+			<external_part name="camera" type="model" physics="surface" buoyant="false">
+				<physical>
+					<mesh filename="naiad/camera.obj" scale="1.0"/>
+					<thickness value="0.003"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</physical>
+				<visual>
+					<mesh filename="naiad/camera.obj" scale="1.0"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</visual>
+				<material name="Aluminium"/>
+				<look name="black"/>
+				<compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			</external_part>
+      -->
+
+      <!-- motors has 0.0675m offset -->
+			<external_part name="right_duct" type="model" physics="submerged" buoyant="false">
+				<physical>
+					<mesh filename="girona500/duct_phy.obj" scale="0.6"/>
+					<thickness value="0.003"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</physical>
+				<visual>
+					<mesh filename="girona500/duct.obj" scale="0.6"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</visual>
+				<material name="Neutral"/>
+				<look name="black"/>
+				<compound_transform rpy="0.0 0.0 1.571" xyz="-0.38 0.0576 0.0"/>
+			</external_part>
+
+			<external_part name="left_duct" type="model" physics="submerged" buoyant="false">
+				<physical>
+					<mesh filename="girona500/duct_phy.obj" scale="0.6"/>
+					<thickness value="0.003"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</physical>
+				<visual>
+					<mesh filename="girona500/duct.obj" scale="0.6"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</visual>
+				<material name="Neutral"/>
+				<look name="black"/>
+				<compound_transform rpy="0.0 3.1416 -1.571" xyz="0.38 0.0576 0.0"/>
+			</external_part>
+
+			<external_part name="front_right_duct" type="model" physics="submerged" buoyant="false">
+				<physical>
+					<mesh filename="girona500/duct_phy.obj" scale="0.6"/>
+					<thickness value="0.003"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</physical>
+				<visual>
+					<mesh filename="girona500/duct.obj" scale="0.6"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</visual>
+				<material name="Neutral"/>
+				<look name="black"/>
+				<compound_transform rpy="0.0 -1.571 0.0" xyz="-0.24 0.445 0.0"/>
+			</external_part>
+
+			<external_part name="front_left_duct" type="model" physics="submerged" buoyant="false">
+				<physical>
+					<mesh filename="girona500/duct_phy.obj" scale="0.6"/>
+					<thickness value="0.003"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</physical>
+				<visual>
+					<mesh filename="girona500/duct.obj" scale="0.6"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</visual>
+				<material name="Neutral"/>
+				<look name="black"/>
+				<compound_transform rpy="0.0 -1.571 0.0" xyz="0.24 0.445 0.0"/>
+			</external_part>
+
+			<external_part name="back_right_duct" type="model" physics="submerged" buoyant="false">
+				<physical>
+					<mesh filename="girona500/duct_phy.obj" scale="0.6"/>
+					<thickness value="0.003"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</physical>
+				<visual>
+					<mesh filename="girona500/duct.obj" scale="0.6"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</visual>
+				<material name="Neutral"/>
+				<look name="black"/>
+				<compound_transform rpy="0.0 -1.571 3.1416" xyz="-0.24 -0.445 0.0"/>
+			</external_part>
+
+			<external_part name="back_left_duct" type="model" physics="submerged" buoyant="false">
+				<physical>
+					<mesh filename="girona500/duct_phy.obj" scale="0.6"/>
+					<thickness value="0.003"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</physical>
+				<visual>
+					<mesh filename="girona500/duct.obj" scale="0.6"/>
+					<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				</visual>
+				<material name="Neutral"/>
+				<look name="black"/>
+				<compound_transform rpy="0.0 -1.571 3.1416" xyz="0.24 -0.445 0.0"/>
+			</external_part>
+
+			<external_part name="FrameLeft" type="box" physics="submerged" buoyant="false">
+				<dimensions xyz="0.02 0.76 0.02"/>
+					<thickness value="0.005"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Aluminium"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 3.1416" xyz="0.24 0.0 0.0"/>
+			</external_part>
+
+			<internal_part name="floatyLeft1" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="0.24 0.20 0.0"/>
+			</internal_part>
+
+			<internal_part name="floatyLeft2" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="0.24 -0.20 0.0"/>
+			</internal_part>
+
+			<external_part name="FrameRight" type="box" physics="submerged" buoyant="false">
+				<dimensions xyz="0.02 0.76 0.02"/>
+					<thickness value="0.005"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Aluminium"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 3.1416" xyz="-0.24 0.0 0.0"/>
+			</external_part>
+
+			<internal_part name="floatyRight1" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="-0.24 0.20 0.0"/>
+			</internal_part>
+
+			<internal_part name="floatyRight2" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="-0.24 -0.20 0.0"/>
+			</internal_part>
+
+			<external_part name="FrameBack" type="box" physics="submerged" buoyant="false">
+				<dimensions xyz="0.02 0.48 0.02"/>
+					<thickness value="0.005"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Aluminium"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="0.0 -0.36 0.0"/>
+			</external_part>
+
+			<internal_part name="floatyBack1" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 0.0" xyz="0.15 -0.36 0.0"/>
+			</internal_part>
+
+			<internal_part name="floatyBack2" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 0.0" xyz="-0.15 -0.36 0.0"/>
+			</internal_part>
+
+			<external_part name="FrameFront" type="box" physics="submerged" buoyant="false">
+				<dimensions xyz="0.02 0.48 0.02"/>
+					<thickness value="0.005"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Aluminium"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="0.0 0.36 0.0"/>
+			</external_part>
+
+			<internal_part name="floatyFront1" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 0.0" xyz="0.15 0.36 0.0"/>
+			</internal_part>
+
+			<internal_part name="floatyFront2" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.02" height="0.15"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Styrofoam"/>
+				<mass value="0.1"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 0.0" xyz="-0.15 0.36 0.0"/>
+			</internal_part>
+
+			<external_part name="BodyBox" type="box" physics="submerged" buoyant="true">
+				<thickness value="0.05"/>
+				<dimensions xyz="0.103 0.253 0.503"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Neutral"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="0 0 0"/>
+			</external_part>
+
+			<external_part name="LeftCylinder" type="cylinder" physics="submerged" buoyant="true">
+				<thickness value="0.005"/>
+				<dimensions radius="0.053" height="0.303"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Neutral"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="-0.2 0.00 -0.1"/> <!-- -0.2 0.05 -0.1 -->
+			</external_part>
+
+			<external_part name="RightCylinder" type="cylinder" physics="submerged" buoyant="true">
+				<thickness value="0.005"/>
+				<dimensions radius="0.053" height="0.303"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Neutral"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="0.2 0.00 -0.1"/> <!-- 0.2 0.05 -0.1 -->
+			</external_part>
+
+			<internal_part name="BodyBoxInternal" type="box" physics="submerged" buoyant="true">
+				<dimensions xyz="0.1 0.25 0.5"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Neutral"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="0 0 0"/>
+			</internal_part>
+
+			<internal_part name="LeftCylinderInternal" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.05" height="0.30"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Air"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="-0.2 0.00 -0.1"/> <!-- -0.2 0.05 -0.1 -->
+			</internal_part>
+
+			<internal_part name="RightCylinderInternal" type="cylinder" physics="submerged" buoyant="true">
+				<dimensions radius="0.05" height="0.30"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+				<material name="Air"/>
+				<look name="manipulator"/>
+				<compound_transform rpy="0.0 1.571 1.571" xyz="0.2 0.00 -0.1"/> <!-- 0.2 0.05 -0.1 -->
+			</internal_part>
+		</base_link>
+
+      <!--
+      DEFINITION OF ACTUATORS/THRUSTERS
+      -->
+    <actuator name="thr_right" type="thruster">
+      <link name="Vehicle"/>
+      <origin rpy="0.0 0.0 1.571" xyz="0.38 0.0576 0.0"/>
+      <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
+      <propeller diameter="0.75" right="true">
+        <mesh filename="naiad/propeller.obj" scale="0.6"/>
+        <material name="Neutral"/>
+        <look name="black"/>
+      </propeller>
+    </actuator>
+
+    <actuator name="thr_left" type="thruster">
+      <link name="Vehicle"/>
+      <origin rpy="0.0 0.0 1.571" xyz="-0.38 0.0576 0.0"/>
+      <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
+      <propeller diameter="0.75" right="true">
+        <mesh filename="naiad/propeller.obj" scale="0.6"/>
+        <material name="Neutral"/>
+        <look name="black"/>
+      </propeller>
+    </actuator>
+
+    <actuator name="thr_front_left" type="thruster">
+      <link name="Vehicle"/>
+      <origin rpy="0.0 -1.571 0.0" xyz="0.24 0.445 0.0"/>
+      <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
+      <propeller diameter="0.76" right="true">
+        <mesh filename="naiad/propeller.obj" scale="0.6"/>
+        <material name="Neutral"/>
+        <look name="black"/>
+      </propeller>
+    </actuator>
+
+    <actuator name="thr_front_right" type="thruster">
+      <link name="Vehicle"/>
+      <origin rpy="0.0 -1.571 0.0" xyz="-0.24 0.445 0.0"/>
+      <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
+      <propeller diameter="0.76" right="true">
+        <mesh filename="naiad/propeller.obj" scale="0.6"/>
+        <material name="Neutral"/>
+        <look name="black"/>
+      </propeller>
+    </actuator>
+
+    <actuator name="thr_back_left" type="thruster">
+      <link name="Vehicle"/>
+      <origin rpy="0.0 -1.571 0.0" xyz="0.24 -0.445 0.0"/>
+      <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
+      <propeller diameter="0.76" right="true">
+        <mesh filename="naiad/propeller.obj" scale="0.6"/>
+        <material name="Neutral"/>
+        <look name="black"/>
+      </propeller>
+    </actuator>
+
+    <actuator name="thr_back_right" type="thruster">
+      <link name="Vehicle"/>
+      <origin rpy="0.0 -1.571 0.0" xyz="-0.24 -0.445 0.0"/>
+      <specs thrust_coeff="0.5" torque_coeff="0.00" max_rpm="200.0" inverted="true"/>
+      <propeller diameter="0.76" right="true">
+        <mesh filename="naiad/propeller.obj" scale="0.6"/>
+        <material name="Neutral"/>
+        <look name="black"/>
+      </propeller>
+    </actuator>
+
+    <!--
+    DEFINITION OF SENSORS
+    -->
+		<sensor name="dynamics" type="odometry" rate="30.0">
+			<link name="Vehicle"/>
+			<origin rpy="0.0 0.0 1.571" xyz="0.0 0.0 0.0"/>
+			<ros_publisher topic="/naiad/simulation/odometry"/>
+		</sensor>
+
+		<sensor name="pressure" type="pressure" rate="5.0">
+			<link name="Vehicle"/>
+			<origin rpy="0.0 0.0 1.571" xyz="0.04 -0.27 0.01"/>
+			<noise pressure="5.0"/>
+			<ros_publisher topic="/naiad/simulation/pressure"/>
+		</sensor>
+
+		<sensor name="imu_filter" type="imu" rate="20.0">
+			<link name="Vehicle"/>
+			<origin rpy="0.0 0.0 1.571" xyz="0.0 0.0 0.0"/>
+			<noise angle="0.000001745" angular_velocity="0.00001745"/>
+			<ros_publisher topic="/naiad/simulation/imu"/>
+		</sensor>
+
+		<sensor name="gps" type="gps" rate="1.0">
+			<link name="Vehicle"/>
+			<origin rpy="0.0 0.0 1.571" xyz="0.0 0.0 -0.15"/>
+			<noise ned_position="0.5"/>
+			<ros_publisher topic="/naiad/simulation/gps"/>
+		</sensor>
+
+		<!--
+    <sensor name="Cam" rate="30.0" type="camera">
+      <link name="Vehicle"/>
+      <origin xyz="0.0 0.3 0.0" rpy="0.0 0.0 3.1416"/>
+      <specs resolution_x="400" resolution_y="400" horizontal_fov="60.0"/>
+			<ros_publisher topic="/naiad/simulation/camera"/>
+    </sensor>
+		-->
+
+    <!--
+		<comm name="USBL" device_id="1" type="usbl2">
+			<link name="Vehicle"/>
+			<specs horizontal_fov="360.0" vertical_fov="360.0" range="1000.0" frequency="38000" baseline="0.017"/>
+			<connect device_id="2" occlusion_test="false"/>
+			<autoping rate="0.5"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.2"/>
+			<ros_publisher topic="/naiad/navigator/usbl"/>
+		</comm>
+    -->
+
+		<comm name="USBL" device_id="1" type="usbl">
+			<link name="Vehicle"/>
+			<specs horizontal_fov="360.0" vertical_fov="360.0" range="1000.0"/>
+			<connect device_id="2" occlusion_test="false"/>
+			<autoping rate="0.5"/>
+			<origin rpy="0.0 0.0 1.571" xyz="0.0 0.0 -0.2"/>
+			<ros_publisher topic="/naiad/simulation/usbl"/>
+		</comm>
+
+		<world_transform rpy="0.0 0.0 0.0" xyz="$(arg position)"/>
+		
+		<ros_subscriber thrusters="/naiad/simulation/thruster_setpoints"/>
+		<ros_publisher thrusters="/naiad/simulation/thruster_state"/>
+	</robot>
+</scenario>

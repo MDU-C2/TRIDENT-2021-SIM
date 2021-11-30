@@ -12,7 +12,6 @@
 
 	<materials>
 		<material name="Neutral" density="1000.0" restitution="0.1"/>
-		<material name="AlmostNeutral" density="990.0" restitution="0.1"/>
 		<material name="Rock" density="3000.0" restitution="0.8"/>
 		<material name="Fiberglass" density="1500.0" restitution="0.3"/>
 		<material name="Aluminium" density="2710.0" restitution="0.5"/>
@@ -39,19 +38,18 @@
 		<look name="gray" gray="0.5" roughness="0.4" metalness="0.5"/>
 		<look name="tank" rgb="0.9 0.9 0.9" roughness="0.9"/>
 		<look name="duct" gray="0.1" roughness="0.4" metalness="0.5"/>
-		<look name="propeller" gray="1.0" roughness="0.3" texture="athena/propeller_tex.png"/>
+		<look name="propeller" gray="1.0" roughness="0.3" texture="naiad/propeller_tex.png"/>
 	</looks>
 
+	<static name="Bottom" type="terrain">
+	    <height_map filename="terrain2.png"/>
+	    <dimensions scalex="0.3" scaley="0.3" height="0.5"/>
+	    <material name="Rock"/>
+	    <look name="gray"/>
+	    <world_transform xyz="0.0 0.0 15.0" rpy="0.0 0.0 0.0"/>
+	</static>
 
-	<include file="$(find trident_sim)/scenarios/athena.scn">
-		<arg name="position" value="0.0 0.0 0.0"/>
+	<include file="$(find trident_sim)/scenarios/naiad_nocam.scn">
+		<arg name="position" value="0.0 0.0 1.0"/>
 	</include>
-
-	<dynamic name="Box" type="box" physics="submerged" buoyant="true">
-		<dimensions xyz="0.5 1.0 2.0"/>
-		<origin xyz="0.5 0.0 0.0" rpy="0.0 0.0 0.0"/>
-		<material name="Steel"/>
-		<look name="Yellow"/>
-		<world_transform xyz="0.0 0.0 2.0" rpy="0.0 0.0 0.0"/>
-	</dynamic>
 </scenario>

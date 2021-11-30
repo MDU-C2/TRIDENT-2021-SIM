@@ -8,6 +8,7 @@
 		<atmosphere>
 			<sun azimuth="40.0" elevation="60.0"/>
 		</atmosphere>
+
 	</environment>
 
 	<materials>
@@ -18,6 +19,7 @@
 		<material name="Aluminium" density="2710.0" restitution="0.5"/>
 		<material name="Styrofoam" density="50.0" restitution="0.5"/>
 		<material name="Air" density="1.3" restitution="0.5"/>
+		<!--
 		<friction_table>
 			<friction material1="Neutral" material2="Neutral" static="0.5" dynamic="0.2"/>
 			<friction material1="Neutral" material2="Rock" static="0.2" dynamic="0.1"/>
@@ -30,6 +32,7 @@
 			<friction material1="Fiberglass" material2="Aluminium" static="0.5" dynamic="0.2"/>
 			<friction material1="Aluminium" material2="Aluminium" static="0.8" dynamic="0.5"/>
 		</friction_table>
+		-->
 	</materials>
 
 	<looks>
@@ -40,18 +43,24 @@
 		<look name="tank" rgb="0.9 0.9 0.9" roughness="0.9"/>
 		<look name="duct" gray="0.1" roughness="0.4" metalness="0.5"/>
 		<look name="propeller" gray="1.0" roughness="0.3" texture="athena/propeller_tex.png"/>
+		<look name="seafloor" rgb="0.0 0.0 0.0" roughness="0.0" texture="terrain2.png"/>
 	</looks>
 
+	<!--
+	<static name="Bottom" type="terrain">
+	    <height_map filename="terrain2.png"/>
+	    <dimensions scalex="0.2" scaley="0.2" height="0.5"/>
+	    <material name="Rock"/>
+	    <look name="seafloor"/>
+	    <world_transform xyz="0.0 0.0 15.0" rpy="0.0 0.0 0.0"/>
+	</static>
+	-->
 
 	<include file="$(find trident_sim)/scenarios/athena.scn">
 		<arg name="position" value="0.0 0.0 0.0"/>
 	</include>
 
-	<dynamic name="Box" type="box" physics="submerged" buoyant="true">
-		<dimensions xyz="0.5 1.0 2.0"/>
-		<origin xyz="0.5 0.0 0.0" rpy="0.0 0.0 0.0"/>
-		<material name="Steel"/>
-		<look name="Yellow"/>
-		<world_transform xyz="0.0 0.0 2.0" rpy="0.0 0.0 0.0"/>
-	</dynamic>
+	<include file="$(find trident_sim)/scenarios/naiad_nocam.scn">
+		<arg name="position" value="2.0 2.0 12.0"/>
+	</include>
 </scenario>
