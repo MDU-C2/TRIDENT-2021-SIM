@@ -11,6 +11,11 @@ The simulation is CPU heavy and requires a recent GPU. The minimum requirement i
 * SDL2 library (libsdl2-dev, may need the fix described [here](https://github.com/patrykcieslak/stonefish#installation))
 * Freetype library (libfreetype6-dev)
 
+Un ubuntu, these can be install with:
+```
+sudo apt install libglm-dev libsdl2-dev libfreetype6-dev
+```
+
 ## Installation
 
 * Clone this repo into your ros workspace src directory:
