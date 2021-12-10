@@ -16,7 +16,7 @@ def yesno(question):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Extract images from a ROS bag.")
+    parser = argparse.ArgumentParser(description="Extract images and yaw value from a ROS bag.")
     parser.add_argument("bag_file", help="Input ROS bag.")
     parser.add_argument("output_dir", help="Output directory.")
     parser.add_argument("csv_file", help="Output csv file")
