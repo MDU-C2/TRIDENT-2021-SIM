@@ -42,11 +42,11 @@
 	</looks>
 
 	<static name="Bottom" type="terrain">
-	    <height_map filename="terrain2.png"/>
-	    <dimensions scalex="0.3" scaley="0.3" height="0.5"/>
+	    <height_map filename="noise_test3.png"/>
+	    <dimensions scalex="0.04" scaley="0.04" height="0.3"/>
 	    <material name="Rock"/>
 	    <look name="gray"/>
-	    <world_transform xyz="0.0 0.0 15.0" rpy="0.0 0.0 0.0"/>
+	    <world_transform xyz="0.0 0.0 3.0" rpy="0.0 0.0 0.0"/>
 	</static>
 
 	<include file="$(find trident_sim)/scenarios/naiad.scn">

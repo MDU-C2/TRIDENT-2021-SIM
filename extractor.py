@@ -65,16 +65,28 @@ def main():
         odometry_topic, args.csv_file))
     # The bag file should be in the same directory as your terminal
     bag = rosbag.Bag(args.bag_file)
-    column_names = ['time', 'yaw']
+    column_names = ['time', 'xp', 'yp', 'zp', 'xr', 'yr', 'zr', 'wr']
     df = pd.DataFrame(columns=column_names)
 
     for topic, msg, t in bag.read_messages(topics=odometry_topic):
-        z = msg.pose.pose.orientation.z
+        xp = msg.pose.pose.position.x
+        yp = msg.pose.pose.position.y
+        zp = msg.pose.pose.position.z
+        xr = msg.pose.pose.orientation.z
+        yr = msg.pose.pose.orientation.y
+        zr = msg.pose.pose.orientation.z
+        wr = msg.pose.pose.orientation.w
         time = str(msg.header.stamp.secs) + '.' + str(msg.header.stamp.nsecs)
 
         df = df.append(
             {'time': time,
-             'yaw': z},
+             'xp': xp,
+             'yp': yp,
+             'zp': zp,
+             'xr': xr,
+             'yr': yr,
+             'zr': zr,
+             'wr': wr},
             ignore_index=True)
 
     df.to_csv(args.csv_file)
