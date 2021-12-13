@@ -32,22 +32,25 @@
 	</materials>
 
 	<looks>
-		<look name="black" gray="0.05" roughness="0.2"/>
+		<look name="black" gray="0.05" roughness="0.7"/>
 		<look name="yellow" rgb="1.0 0.9 0.0" roughness="0.3"/>
 		<look name="green" rgb="0.0 0.9 0.0" roughness="0.3"/>
 		<look name="gray" gray="0.5" roughness="0.4" metalness="0.5"/>
 		<look name="tank" rgb="0.9 0.9 0.9" roughness="0.9"/>
 		<look name="duct" gray="0.1" roughness="0.4" metalness="0.5"/>
 		<look name="propeller" gray="1.0" roughness="0.3" texture="naiad/propeller_tex.png"/>
+		<look name="noise" gray="1.0" roughness="0.0" texture="noise_test3.png"/>
 	</looks>
 
+	<!--
 	<static name="Bottom" type="terrain">
 	    <height_map filename="noise_test3.png"/>
-	    <dimensions scalex="0.04" scaley="0.04" height="0.3"/>
+	    <dimensions scalex="0.03" scaley="0.03" height="0.05"/>
 	    <material name="Rock"/>
-	    <look name="gray"/>
+	    <look name="noise"/>
 	    <world_transform xyz="0.0 0.0 3.0" rpy="0.0 0.0 0.0"/>
 	</static>
+	-->
 
 	<include file="$(find trident_sim)/scenarios/naiad.scn">
 		<arg name="position" value="0.0 0.0 1.0"/>
