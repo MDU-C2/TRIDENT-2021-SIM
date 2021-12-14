@@ -72,7 +72,7 @@ def main():
         xp = msg.pose.pose.position.x
         yp = msg.pose.pose.position.y
         zp = msg.pose.pose.position.z
-        xr = msg.pose.pose.orientation.z
+        xr = msg.pose.pose.orientation.x
         yr = msg.pose.pose.orientation.y
         zr = msg.pose.pose.orientation.z
         wr = msg.pose.pose.orientation.w
